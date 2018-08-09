@@ -1,2 +1,4 @@
-namespace aries.global.pollination;
+@documented(pollination)
+namespace aries.global.pollination
+	using (FLOWER_AVAILABILITY_TABLE) from aries.global.pollination.tables;
 

@@ -2,6 +2,7 @@ namespace aries.global.pollination.tables;
 
 @documented(flower_availability)
 define FLOWER_AVAILABILITY_TABLE as {{
+	
 	landcovertype                                   |  flowers
 	------------------------------------------------------------
 	landcover:ArtificialSurface				        |	0.05,
@@ -27,4 +28,5 @@ define FLOWER_AVAILABILITY_TABLE as {{
 	landcover:GlacierAndPerpetualSnow				|	0,
 	landcover:Wetland								|	0.75,
 	landcover:WaterBody							    |	0
+	
 }};
