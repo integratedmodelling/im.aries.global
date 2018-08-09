@@ -1,0 +1,60 @@
+namespace aries.global.recreation.tables;
+
+@documented(hemeroby_table)
+define HEMEROBY_TABLE as {{
+	
+	          landcover                             |   hemeroby
+	-----------------------------------------------------------------
+	landcover:ArtificialSurface                     |  7,
+	landcover:ArableLand                            |  6,
+	landcover:NonIrrigatedArableLand                |  5, //4b-5a-5b
+	landcover:PermanentlyIrrigatedArableLand        |  5, //4b-5a-5b
+	landcover:RiceField                             |  5, //4b-5a-5b
+	landcover:PermanentCropland                     |  4, //4a-4b-5a  //ADD
+	landcover:Vineyard                              |  4, //4a-4b-5a
+	landcover:FruitAndBerryPlantation               |  4, //4a-4b-5a
+	landcover:OliveGrove                            |  4, //4a-4b-5a
+	landcover:Pastureland                           |  4, //3-4a-4b
+	landcover:AnnualCroplandAssociatedWithPermanent |  4, //4a-4b-5a
+	landcover:ComplexCultivationPatternedLand       |  4, //4a-4b-5a
+	landcover:AgriculturalLandWithNaturalVegetation |  4, //4a-4b-5a
+	landcover:AgroForestryLand                      |  4, //3-4a-4b
+	landcover:BroadleafForest                       |  3, //2-3-4a
+	landcover:ConiferousForest                      |  3, //2-3-4a
+	landcover:MixedForest                           |  3, //2-3-4a
+	landcover:NaturalGrassland                      |  3, //2-3-4a
+	landcover:MoorAndHeathland                      |  2,
+	landcover:SclerophyllousVegetation              |  2,
+	landcover:TransitionalWoodlandScrub             |  2,
+	landcover:BeachDuneAndSand                      |  2,
+	landcover:BareArea                              |  1, //ADD
+	landcover:BareRock                              |  1,
+	landcover:LichenMoss                            |  1,
+	landcover:SparseVegetation                      |  2,
+	landcover:BurnedLand                            |  5,
+	landcover:GlacierAndPerpetualSnow               |  1,
+	landcover:Wetland                               |  1,
+	landcover:Mangrove                              |  1,
+	landcover:InlandMarsh                           |  2,
+	landcover:PeatBog                               |  2,
+	landcover:SaltMarsh                             |  2,
+	landcover:Saline                                |  5,
+	landcover:IntertidalFlat                        |  1,
+	landcover:WaterBody                             |  1	
+}};
+
+@documented(recreation_opportunity_table)
+define RECREATION_OPPORTUNITY_TABLE as {{
+	
+	remoteness | recreation_potential | score |  description 
+   ---------------------------------------------------------------------------------------
+       <= 0.25 |	<0.75             |   1   | 'low provision & easily accessible',
+   0.25 to 0.5 |	<0.75             |	  2   | 'low provision accessible',
+          >0.5 |	<0.75             |	  3   | 'low provision & not easily accessible',
+       <= 0.25 |	0.75 to 0.88      |	  4   | 'medium provision & easily accessible',
+   0.25 to 0.5 |	0.75 to 0.88      |	  5   | 'medium provision accessible',
+          >0.5 |	0.75 to 0.88      |	  6   | 'medium provision & not easily accessible',
+       <= 0.25 |	>0.88             |	  7   | 'high provision & easily accessible',
+   0.25 to 0.5 |    >0.88             |	  8   | 'high provision & accessible',
+          >0.5 |    >0.88             |	  9   | 'high provision & not easily accessible'
+}};

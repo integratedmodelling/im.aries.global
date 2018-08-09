@@ -1,0 +1,30 @@
+namespace aries.global.pollination.tables;
+
+@documented(flower_availability)
+define FLOWER_AVAILABILITY_TABLE as {{
+	landcovertype                                   |  flowers
+	------------------------------------------------------------
+	landcover:ArtificialSurface				        |	0.05,
+	landcover:ArableLand							|	0.05,
+	landcover:PermanentCropland					    |	0.6,
+	landcover:Pastureland							|	0.2,
+	landcover:AnnualCroplandAssociatedWithPermanent |	0.5,
+	landcover:ComplexCultivationPatternedLand		|	0.4,
+	landcover:AgriculturalLandWithNaturalVegetation |	0.75,
+	landcover:AgroForestryLand						|	0.5,
+	landcover:BroadleafForest						|	0.9,	
+	landcover:ConiferousForest						|	0.3,
+	landcover:MixedForest							|	0.6,
+	landcover:NaturalGrassland						|	1,
+	landcover:MoorAndHeathland						|	1,
+	landcover:SclerophyllousVegetation				|	0.75,
+	landcover:TransitionalWoodlandScrub			    |	0.85,
+	landcover:BeachDuneAndSand						|	0.1,
+	landcover:BareRock								|	0,
+	landcover:LichenMoss							|	0,
+	landcover:SparseVegetation						|	0.35,
+	landcover:BurnedLand							|	0.2,
+	landcover:GlacierAndPerpetualSnow				|	0,
+	landcover:Wetland								|	0.75,
+	landcover:WaterBody							    |	0
+}};
