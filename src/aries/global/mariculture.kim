@@ -1,2 +1,9 @@
 namespace aries.global.mariculture;
 
+private model magnitude of geography:BathymetricDepth
+	observing geography:BathymetricDepth in m named depth
+	lookup (depth) into
+		< -100      | 0,
+		-100 to -31 | 0.25,
+		-30.99 to 0 | 1
+;

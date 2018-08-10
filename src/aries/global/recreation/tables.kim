@@ -3,7 +3,7 @@ namespace aries.global.recreation.tables;
 @documented(hemeroby_table)
 define HEMEROBY_TABLE as {{
 	
-	          landcover                             |   hemeroby
+	          landcover                             |  hemeroby
 	-----------------------------------------------------------------
 	landcover:ArtificialSurface                     |  7,
 	landcover:ArableLand                            |  6,
@@ -48,13 +48,13 @@ define RECREATION_OPPORTUNITY_TABLE as {{
 	
 	remoteness | recreation_potential | score |  description 
    ---------------------------------------------------------------------------------------
-       <= 0.25 |	<0.75             |   1   | 'low provision & easily accessible',
-   0.25 to 0.5 |	<0.75             |	  2   | 'low provision accessible',
-          >0.5 |	<0.75             |	  3   | 'low provision & not easily accessible',
-       <= 0.25 |	0.75 to 0.88      |	  4   | 'medium provision & easily accessible',
-   0.25 to 0.5 |	0.75 to 0.88      |	  5   | 'medium provision accessible',
-          >0.5 |	0.75 to 0.88      |	  6   | 'medium provision & not easily accessible',
-       <= 0.25 |	>0.88             |	  7   | 'high provision & easily accessible',
-   0.25 to 0.5 |    >0.88             |	  8   | 'high provision & accessible',
-          >0.5 |    >0.88             |	  9   | 'high provision & not easily accessible'
+       <= 0.25 |	<0.75             |   1   | 'low provision, easily accessible',
+   0.25 to 0.5 |	<0.75             |	  2   | 'low provision, accessible',
+          >0.5 |	<0.75             |	  3   | 'low provision, not easily accessible',
+       <= 0.25 |	0.75 to 0.88      |	  4   | 'medium provision, easily accessible',
+   0.25 to 0.5 |	0.75 to 0.88      |	  5   | 'medium provision, accessible',
+          >0.5 |	0.75 to 0.88      |	  6   | 'medium provision, not easily accessible',
+       <= 0.25 |	>0.88             |	  7   | 'high provision, easily accessible',
+   0.25 to 0.5 |    >0.88             |	  8   | 'high provision, accessible',
+          >0.5 |    >0.88             |	  9   | 'high provision, not easily accessible'
 }};
