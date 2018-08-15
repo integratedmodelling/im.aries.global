@@ -30,3 +30,33 @@ define FLOWER_AVAILABILITY_TABLE as {{
 	landcover:WaterBody							    |	0
 	
 }};
+
+define NESTING_SUITABILITY_TABLE as {{
+	
+	landcovertype                                    |  nestingsuitability
+	---------------------------------------------------------------------
+	landcover:ArtificialSurface                      |   0.1,
+	landcover:ArableLand                             |   0.2,
+	landcover:PermanentCropland                      |   0.4,
+	landcover:Pastureland                            |   0.3,
+	landcover:AnnualCroplandAssociatedWithPermanent  |   0.4,
+	landcover:ComplexCultivationPatternedLand        |   0.4,
+	landcover:AgriculturalLandWithNaturalVegetation  |   0.7,
+	landcover:AgroForestryLand                       |   1,
+	landcover:BroadleafForest                        |   0.8,
+	landcover:ConiferousForest                       |   0.8,
+	landcover:MixedForest                            |   0.8,
+	landcover:NaturalGrassland                       |   0.8,
+	landcover:MoorAndHeathland                       |   0.9,
+	landcover:SclerophyllousVegetation               |   0.9,
+	landcover:TransitionalWoodlandScrub              |   1,
+	landcover:BeachDuneAndSand                       |   0.3,
+	landcover:BareRock                               |   0,
+	landcover:LichenMoss                             |   0,
+	landcover:SparseVegetation                       |   0.7,
+	landcover:BurnedLand                             |   0.3,
+	landcover:GlacierAndPerpetualSnow                |   0,
+	landcover:Wetland                                |   0.3,
+	landcover:WaterBody                              |   0
+	
+}};
