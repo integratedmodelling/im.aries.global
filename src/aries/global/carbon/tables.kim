@@ -1,6 +1,6 @@
 namespace aries.global.carbon.tables;
 
-@todo('debull this shit') 
+@todo('debull') 
 abstract attribute EcoFloristicRegionType 
 	"FAO Global EcoFloristic Regions"
 	//These typically describe potential landcover in the absence of human settlement and alteration.
@@ -28,6 +28,11 @@ abstract attribute EcoFloristicRegionType
 		TropicalRainforest,
 		SubtropicalMountainSystem;
 
+@todo('split up concepts above into something sensible')
+@todo('review continent either by identity or region. Here Australia is a country so no way
+       it can remain like this. We can have geography.regions with "geography.region:Africa 
+       equals geography:African earth:Region" etc.')
+@documented(vegetation_carbon_table)
 define VEGETATION_CARBON_TABLE as {{
 	
 	    landcover               		         | ecofloristicregion             | continent                | degraded| burned  | vegetationcarbon

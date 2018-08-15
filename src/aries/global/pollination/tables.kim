@@ -31,6 +31,7 @@ define FLOWER_AVAILABILITY_TABLE as {{
 	
 }};
 
+@documented(nesting_suitability)
 define NESTING_SUITABILITY_TABLE as {{
 	
 	landcovertype                                    |  nestingsuitability
