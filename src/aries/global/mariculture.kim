@@ -1,7 +1,7 @@
 namespace aries.global.mariculture;
 
-@documented(depth)
-private model magnitude of geography:BathymetricDepth
+@documented(mariculture.bathymetry)
+private model magnitude of geography:BathymetricDepth for agriculture:Mariculture
 	"Depth rescaled to represent its effect on suitability for mariculture"
 	observing geography:BathymetricDepth in m named depth
 	lookup (depth) into
