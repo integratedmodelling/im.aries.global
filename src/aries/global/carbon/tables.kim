@@ -32,7 +32,7 @@ abstract attribute EcoFloristicRegionType
 @todo('review continent either by identity or region. Here Australia is a country so no way
        it can remain like this. We can have geography.regions with "geography.region:Africa 
        equals geography:African earth:Region" etc.')
-@documented(vegetation_carbon_table)
+@documented(carbon.tables.vegetation_storage)
 define VEGETATION_CARBON_TABLE as {{
 	
 	    landcover               		         | ecofloristicregion             | continent                | degraded| burned  | vegetationcarbon
