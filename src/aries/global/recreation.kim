@@ -10,7 +10,7 @@ model value of behavior:Recreational behavior:Activity 1 to 9
 ;
 
 @documented(recreation.impedance)
-model im:Impedance of behavior:TravelConnection /* TODO add range */
+model im:Impedance of behavior:TravelConnection
 	observing 
 		distance to infrastructure:City named citydistance,
 		im:Duration of behavior:TravelConnection in day named traveltime
@@ -59,8 +59,6 @@ model im:Differential (value of behavior:Recreational behavior:Activity) -1 to 1
 		im:Normalized (ses:Demand value of behavior:Recreational behavior:Activity) named demand
 	on definition set to [ (potential ** .5) * (demand ** .5) ]
 ;
-
-// --- private models ----
 
 @documented(recreation.hemeroby)
 private model magnitude of proportion of behavior:Recreational behavior:Activity
