@@ -1,6 +1,11 @@
+/**
+ * This file is part of im.aries.global.
+ * <license>
+ */
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
+@todo('need a better concept for whatever this is the value of, and an alias for it')
 @documented(recreation.values.actual)
 model value of behavior:Recreational behavior:Activity 1 to 9
 	observing
@@ -12,7 +17,7 @@ model value of behavior:Recreational behavior:Activity 1 to 9
 @documented(recreation.impedance)
 model im:Impedance of behavior:TravelConnection
 	observing 
-		distance to infrastructure:City named citydistance,
+		distance to infrastructure:City in m named citydistance,
 		im:Duration of behavior:TravelConnection in day named traveltime
 	on definition set to [
 		traveltime < 0.02085 
@@ -21,10 +26,10 @@ model im:Impedance of behavior:TravelConnection
 	]
 ;
 
-@todo("fix names; use a clamping function for the nodata instead of the conditional")
+@todo("use meaningful names; use a clamping function for the nodata instead of the conditional")
 @todo("use sensible decay functions for all distances")
-@todo("for later: use distance along network to supplement the others for different 
-	   classes of users")
+@todo("for later: use distance along various networks (road, air, walk) to supplement 
+	   the others for different classes of users")
 @documented(recreation.values.potential)
 model im:Potential value of behavior:Recreational behavior:Activity 
 	observing 
@@ -52,6 +57,8 @@ model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 	on definition set to [ impedance + population/2 ]
 ;
 
+@main
+@todo("differential isn't really balance. Need a way to annotate that.")
 @documented(recreation.balance)
 model im:Differential (value of behavior:Recreational behavior:Activity) -1 to 1
 	observing
