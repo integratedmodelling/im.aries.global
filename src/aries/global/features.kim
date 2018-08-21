@@ -1,0 +1,12 @@
+namespace aries.global.features	
+	"Project-wide observation strategies for normally fine-grained, highly detailed features,
+     to avoid excessive rasterizations and computation times at higher resolutions.";
+
+@reliability(25)
+model local:ferdinando.villa:im.data.internal:javier-martinez-global-conservation.wdpa_all_rasterized
+	as presence of conservation:ProtectedArea;
+
+@reliability(25)
+model each conservation:ProtectedArea
+	observing presence of conservation:ProtectedArea named present
+	using gis.features.extract(select = "present");

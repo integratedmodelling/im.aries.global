@@ -1,2 +1,8 @@
-namespace aries.global.recreation;
+namespace aries.global.recreation
+	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
+@documented(recreation.hemeroby)
+private model magnitude of proportion of behavior:Recreational behavior:Activity
+	observing landcover:LandCoverType named landcover
+	lookup (landcover, ?) into HEMEROBY_TABLE
+;
