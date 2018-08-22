@@ -35,9 +35,9 @@ model im:Potential value of behavior:Recreational behavior:Activity
 	observing 
 		magnitude of proportion of behavior:Recreational behavior:Activity named hi,
 		distance to conservation:ProtectedArea in m named pa,
-		distance to earth:CoastLine in m named wa,
+		distance to earth:Coastline in m named wa,
 		distance to earth:Stream in m named st,
-		distance to earth:Lake in m named lk,
+		distance to earth:WaterBody in m named lk,
 		distance to earth:MountainPeak in m named mp
 	on definition set to [
 		hi * 

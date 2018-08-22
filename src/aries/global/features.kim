@@ -10,14 +10,14 @@ model local:ferdinando.villa:im.data.internal:javier-martinez-global-conservatio
 
 @reliability(25)
 model local:ferdinando.villa:im.data.internal:javier-martinez-global-hydrology.glwd_l3
-	as presence of earth:Lake;
+	as presence of earth:WaterBody;
 	
 @reliability(25)
 model each conservation:ProtectedArea
-	observing presence of conservation:ProtectedArea named protected
-	using gis.features.extract(select = [protected]);
+	observing presence of conservation:ProtectedArea named protected_status
+	using gis.features.extract(select = [protected_status]);
 
 @reliability(25)
 model each earth:Lake
-	observing presence of earth:Lake named lake
-	using gis.features.extract(select = [lake], simplify = true );
+	observing presence of earth:WaterBody named waterbody_presence
+	using gis.features.extract(select = [waterbody_presence], simplify = true );
