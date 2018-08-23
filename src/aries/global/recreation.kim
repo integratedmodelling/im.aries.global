@@ -6,7 +6,9 @@ namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
 @todo('need a better concept for whatever this is the value of, and an alias for it')
+
 @documented(recreation.values.actual)
+@main(keywords=(), label="")
 model value of behavior:Recreational behavior:Activity 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
@@ -30,6 +32,8 @@ model im:Impedance of behavior:TravelConnection
 @todo("use sensible decay functions for all distances")
 @todo("for later: use distance along various networks (road, air, walk) to supplement 
 	   the others for different classes of users")
+
+@main(/* TODO */)
 @documented(recreation.values.potential)
 model im:Potential value of behavior:Recreational behavior:Activity 
 	observing 
@@ -49,6 +53,7 @@ model im:Potential value of behavior:Recreational behavior:Activity
 	]
 ;
 
+@main(/* TODO */)
 @documented(recreation.demand)
 model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 	observing
@@ -57,8 +62,9 @@ model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 	on definition set to [ impedance + population/2 ]
 ;
 
-@main
 @todo("differential isn't really balance. Need a way to annotate that.")
+@todo("provide that new trait with a deficit/zero/surplus colormap (midpoint zero)")
+@main(/* TODO */)
 @documented(recreation.balance)
 model im:Differential (value of behavior:Recreational behavior:Activity) -1 to 1
 	observing
