@@ -1,7 +1,7 @@
 namespace aries.global.pollination.tables;
 
 @documented(flower_availability)
-define FLOWER_AVAILABILITY_TABLE as {{
+define FLOWERING_PROBABILITY_TABLE as {{
 	
 	landcovertype                                   |  flowers
 	------------------------------------------------------------
@@ -32,7 +32,7 @@ define FLOWER_AVAILABILITY_TABLE as {{
 }};
 
 @documented(nesting_suitability)
-define NESTING_SUITABILITY_TABLE as {{
+define NESTING_PROBABILITY_TABLE as {{
 	
 	landcovertype                                    |  nestingsuitability
 	---------------------------------------------------------------------

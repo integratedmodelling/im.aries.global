@@ -5,17 +5,6 @@
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
-@todo('need a better concept for whatever this is the value of, and an alias for it')
-
-@documented(recreation.values.actual)
-@main(keywords=(), label="")
-model value of behavior:Recreational behavior:Activity 1 to 9
-	observing
-		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
-		im:Normalized (im:Potential value of behavior:Recreational behavior:Activity) named potential
-	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE
-;
-
 @documented(recreation.impedance)
 model im:Impedance of behavior:TravelConnection
 	observing 
@@ -27,6 +16,17 @@ model im:Impedance of behavior:TravelConnection
 		    : (451/(450 + Math.exp(1.12 * (10**-4)*(citydistance + 30000))))
 	]
 ;
+
+@todo('need a better concept for whatever this is the value of, and an alias for it')
+@documented(recreation.values.actual)
+@main(keywords=(), label="")
+model value of behavior:Recreational behavior:Activity 1 to 9
+	observing
+		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
+		im:Normalized (im:Potential value of behavior:Recreational behavior:Activity) named potential
+	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE
+;
+
 
 @todo("use meaningful names; use a clamping function for the nodata instead of the conditional")
 @todo("use sensible decay functions for all distances")
@@ -59,7 +59,7 @@ model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 	observing
 		im:Impedance of behavior:TravelConnection named impedance,
 		im:Normalized count of demography:HumanIndividual named population
-	on definition set to [ impedance + population/2 ]
+	on definition set to [impedance + population/2]
 ;
 
 @todo("differential isn't really balance. Need a way to annotate that.")
