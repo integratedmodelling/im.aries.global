@@ -62,15 +62,13 @@ model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 	on definition set to [impedance + population/2]
 ;
 
-@todo("differential isn't really balance. Need a way to annotate that.")
-@todo("provide that new trait with a deficit/zero/surplus colormap (midpoint zero)")
 @main(/* TODO */)
 @documented(recreation.balance)
-model im:Differential (value of behavior:Recreational behavior:Activity) -1 to 1
+model im:Net (value of behavior:Recreational behavior:Activity) -1 to 1
 	observing
 		im:Normalized (im:Potential value of behavior:Recreational behavior:Activity) named potential,
 		im:Normalized (ses:Demand value of behavior:Recreational behavior:Activity) named demand
-	on definition set to [ (potential ** .5) * (demand ** .5) ]
+	on definition set to [(potential ** 0.5) * (demand ** 0.5)]
 ;
 
 @documented(recreation.hemeroby)
