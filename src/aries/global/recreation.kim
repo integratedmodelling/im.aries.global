@@ -1,7 +1,3 @@
-/**
- * This file is part of im.aries.global.
- * <license>
- */
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
@@ -18,8 +14,8 @@ model im:Impedance of behavior:TravelConnection
 ;
 
 @todo('need a better concept for whatever this is the value of, and an alias for it')
-@documented(recreation.values.actual)
 @main(keywords=(), label="")
+@documented(recreation.values.actual)
 model value of behavior:Recreational behavior:Activity 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
@@ -27,12 +23,10 @@ model value of behavior:Recreational behavior:Activity 1 to 9
 	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE
 ;
 
-
 @todo("use meaningful names; use a clamping function for the nodata instead of the conditional")
 @todo("use sensible decay functions for all distances")
 @todo("for later: use distance along various networks (road, air, walk) to supplement 
 	   the others for different classes of users")
-
 @main(/* TODO */)
 @documented(recreation.values.potential)
 model im:Potential value of behavior:Recreational behavior:Activity 
@@ -44,12 +38,11 @@ model im:Potential value of behavior:Recreational behavior:Activity
 		distance to earth:WaterBody in m named lk,
 		distance to earth:MountainPeak in m named mp
 	on definition set to [
-		hi * 
-			((nodata(pa) ? 0 : pa) + 
-				(nodata(wa) ? 0 : wa) + 
-				(nodata(st) ? 0 : st) + 
-				(nodata(lk) ? 0 : lk) + 
-				(nodata(mp) ? 0 : mp))
+		hi * ((nodata(pa) ? 0 : pa) 
+			  + (nodata(wa) ? 0 : wa) 
+			  + (nodata(st) ? 0 : st) 
+			  + (nodata(lk) ? 0 : lk) 
+			  + (nodata(mp) ? 0 : mp))
 	]
 ;
 
