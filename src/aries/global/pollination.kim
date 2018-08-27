@@ -31,7 +31,7 @@ model occurrence of agriculture:Pollinator biology:Insect caused by earth:Weathe
 	observing
 		im:Mean im:Annual earth:AtmosphericTemperature in Celsius named 'temperature',
 		im:Mean im:Annual earth:SolarRadiation in J named radiation
-	on definition set to [0.62 + 1.027 * temperature + 0.006 * radiation];
+	set to [0.62 + 1.027 * temperature + 0.006 * radiation];
 
 @documented(pollination.insectoccurrence)	
 model occurrence of agriculture:Pollinator biology:Insect
@@ -51,5 +51,5 @@ model im:Net value of es.pollination:Pollination
 			named pollinated_yield,
 		occurrence of agriculture:Pollinator biology:Insect 
 			named pollinator_occurrence
-	on definition set to [pollinator_occurrence - pollinated_yield]
+	set to [pollinator_occurrence - pollinated_yield]
 ;
