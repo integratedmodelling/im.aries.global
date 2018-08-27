@@ -6,7 +6,7 @@ model im:Impedance of behavior:TravelConnection
 	observing 
 		distance to infrastructure:City in m named citydistance,
 		im:Duration of behavior:TravelConnection in day named traveltime
-	on definition set to [
+	set to [
 		traveltime < 0.02085 
 			? (451/(450 + Math.exp(1.12 * (10**-4)*citydistance)))  
 		    : (451/(450 + Math.exp(1.12 * (10**-4)*(citydistance + 30000))))
@@ -38,7 +38,7 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 		distance to earth:Stream in m named stream_effect,
 		distance to earth:WaterBody in m named lake_effect,
 		distance to earth:MountainPeak in m named mountain_effect
-	on definition set to [
+	set to [
 		natural_attractiveness * 
 		      ((nodata(pristine_area_effect) ? 0 : pristine_area_effect) 
 			  + (nodata(lake_effect) ? 0 : lake_effect) 
@@ -54,12 +54,12 @@ model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
 	observing
 		im:Impedance of behavior:TravelConnection named impedance,
 		im:Normalized count of demography:HumanIndividual named population
-	on definition set to [impedance + population/2]
+	set to [impedance + population/2]
 ;
 
 @main(/* TODO */)
-@fixme('not sure about the equation at all')
-@fixme("the normalization of the inputs is just a trick to make this look right, but it's wrong. 
+@fixme('not sure about the equation at all - square roots?')
+@fixme("the normalization of the inputs seems like a trick to make this look right, but it's wrong. 
         What is really needed is a stable scale for the potential, so both can be rescaled and compared.")
 @todo('appropriate colormap (linked to im:Net)')
 @documented(recreation.balance)
@@ -67,7 +67,7 @@ model im:Net value of behavior:Outdoors behavior:Enjoyment -1 to 1
 	observing
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential,
 		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Enjoyment) named demand
-	on definition set to [(potential ** 0.5) * (demand ** 0.5)]
+	set to [(potential ** 0.5) * (demand ** 0.5)]
 ;
 
 @documented(recreation.hemeroby)

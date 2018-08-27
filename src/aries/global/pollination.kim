@@ -20,7 +20,7 @@ model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Land
 		distance to earth:Lake in m named distance_to_lakes,
 		probability of ecology:Flowering named flowering_probability,
 		probability of agriculture:Pollinator ecology:Nesting named nesting_probability
-	on definition set to [
+	set to [
 		def lake_effect = distance_to_lakes < 1 ? 0 : Math.exp(-distance_to_lakes/0.5)
 		def stream_effect = distance_to_streams < 1 ? 0 : Math.exp(-distance_to_streams/0.5)
 		return stream_effect + lake_effect + (nesting_probability * flowering_probability)
