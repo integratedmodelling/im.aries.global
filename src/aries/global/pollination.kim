@@ -40,7 +40,7 @@ model occurrence of agriculture:Pollinator biology:Insect
 			named insect_activity,
 		occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
 			named landscape_suitability
-	on definition set to
+	set to
 		[insect_activity * (landscape_suitability/insect_activity.max)]
 ;
 
