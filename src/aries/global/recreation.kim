@@ -15,7 +15,7 @@ model im:Impedance of behavior:TravelConnection
 
 @main(keywords=(), label="")
 @documented(recreation.values.actual)
-model ses:Provided value of behavior:Outdoors behavior:Enjoyment 1 to 9
+model im:Realized value of behavior:Outdoors behavior:Enjoyment 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential
