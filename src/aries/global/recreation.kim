@@ -13,42 +13,44 @@ model im:Impedance of behavior:TravelConnection
 	]
 ;
 
-@todo('need a better concept for whatever this is the value of, and an alias for it')
 @main(keywords=(), label="")
 @documented(recreation.values.actual)
-model value of behavior:Recreational behavior:Activity 1 to 9
+model ses:Provided value of behavior:Outdoors behavior:Enjoyment 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
-		im:Normalized (im:Potential value of behavior:Recreational behavior:Activity) named potential
+		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential
 	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE
 ;
 
-@todo("use meaningful names; use a clamping function for the nodata instead of the conditional")
-@todo("use sensible decay functions for all distances")
+@todo("use a clamping function for the nodata instead of the conditional")
+@todo("use sensible decay functions for all distances. Ensure that distances are treated properly")
 @todo("for later: use distance along various networks (road, air, walk) to supplement 
-	   the others for different classes of users")
+	   the others for different classes of users instead of traveltime")
 @main(/* TODO */)
+@fixme("this needs to produce values in a known range")
+@fixme("this needs to produce what it says and not its opposite")
 @documented(recreation.values.potential)
-model im:Potential value of behavior:Recreational behavior:Activity 
+model im:Potential value of behavior:Outdoors behavior:Enjoyment
 	observing 
-		magnitude of proportion of behavior:Recreational behavior:Activity named hi,
-		distance to conservation:ProtectedArea in m named pa,
-		distance to earth:Coastline in m named wa,
-		distance to earth:Stream in m named st,
-		distance to earth:WaterBody in m named lk,
-		distance to earth:MountainPeak in m named mp
+		magnitude of proportion of behavior:Outdoors in behavior:Enjoyment named natural_attractiveness,
+		distance to conservation:ProtectedArea in m named pristine_area_effect,
+		distance to earth:Coastline in m named coastline_effect,
+		distance to earth:Stream in m named stream_effect,
+		distance to earth:WaterBody in m named lake_effect,
+		distance to earth:MountainPeak in m named mountain_effect
 	on definition set to [
-		hi * ((nodata(pa) ? 0 : pa) 
-			  + (nodata(wa) ? 0 : wa) 
-			  + (nodata(st) ? 0 : st) 
-			  + (nodata(lk) ? 0 : lk) 
-			  + (nodata(mp) ? 0 : mp))
+		natural_attractiveness * 
+		      ((nodata(pristine_area_effect) ? 0 : pristine_area_effect) 
+			  + (nodata(lake_effect) ? 0 : lake_effect) 
+			  + (nodata(stream_effect) ? 0 : stream_effect) 
+			  + (nodata(mountain_effect) ? 0 : mountain_effect) 
+			  + (nodata(coastline_effect) ? 0 : coastline_effect))
 	]
 ;
 
 @main(/* TODO */)
 @documented(recreation.demand)
-model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
+model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
 	observing
 		im:Impedance of behavior:TravelConnection named impedance,
 		im:Normalized count of demography:HumanIndividual named population
@@ -56,16 +58,20 @@ model ses:Demand value of behavior:Recreational behavior:Activity 0 to 2
 ;
 
 @main(/* TODO */)
+@fixme('not sure about the equation at all')
+@fixme("the normalization of the inputs is just a trick to make this look right, but it's wrong. 
+        What is really needed is a stable scale for the potential, so both can be rescaled and compared.")
+@todo('appropriate colormap (linked to im:Net)')
 @documented(recreation.balance)
-model im:Net (value of behavior:Recreational behavior:Activity) -1 to 1
+model im:Net value of behavior:Outdoors behavior:Enjoyment -1 to 1
 	observing
-		im:Normalized (im:Potential value of behavior:Recreational behavior:Activity) named potential,
-		im:Normalized (ses:Demand value of behavior:Recreational behavior:Activity) named demand
+		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential,
+		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Enjoyment) named demand
 	on definition set to [(potential ** 0.5) * (demand ** 0.5)]
 ;
 
 @documented(recreation.hemeroby)
-private model magnitude of proportion of behavior:Recreational behavior:Activity
+private model magnitude of proportion of behavior:Outdoors in behavior:Enjoyment
 	observing landcover:LandCoverType named landcover
 	lookup (landcover, ?) into HEMEROBY_TABLE
 ;

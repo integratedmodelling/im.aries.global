@@ -4,7 +4,7 @@ namespace aries.global.pollination
 	
 @todo('put tables in appendix in the docs')
 @documented(pollination.nesting-suitability)
-model probability of agriculture:Honeybee ecology:Nesting
+model probability of agriculture:Pollinator ecology:Nesting
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into NESTING_PROBABILITY_TABLE;
 
@@ -12,3 +12,44 @@ model probability of agriculture:Honeybee ecology:Nesting
 model probability of ecology:Flowering
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into FLOWERING_PROBABILITY_TABLE;
+
+@documented(pollination.insectoccurrence.landscape)	
+model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
+	observing
+		distance to earth:Stream in m named distance_to_streams,
+		distance to earth:Lake in m named distance_to_lakes,
+		probability of ecology:Flowering named flowering_probability,
+		probability of agriculture:Pollinator ecology:Nesting named nesting_probability
+	on definition set to [
+		def lake_effect = distance_to_lakes < 1 ? 0 : Math.exp(-distance_to_lakes/0.5)
+		def stream_effect = distance_to_streams < 1 ? 0 : Math.exp(-distance_to_streams/0.5)
+		return stream_effect + lake_effect + (nesting_probability * flowering_probability)
+	];
+
+@documented(pollination.insectoccurrence.landscape)	
+model occurrence of agriculture:Pollinator biology:Insect caused by earth:Weather
+	observing
+		im:Mean im:Annual earth:AtmosphericTemperature in Celsius named 'temperature',
+		im:Mean im:Annual earth:SolarRadiation in J named radiation
+	on definition set to [0.62 + 1.027 * temperature + 0.006 * radiation];
+
+@documented(pollination.insectoccurrence)	
+model occurrence of agriculture:Pollinator biology:Insect
+	observing 
+		occurrence of agriculture:Pollinator biology:Insect caused by earth:Weather 
+			named insect_activity,
+		occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
+			named landscape_suitability
+	on definition set to
+		[insect_activity * (landscape_suitability/insect_activity.max)]
+;
+
+@documented(pollination.netbenefit)	
+model im:Net value of es.pollination:Pollination
+	observing
+		im:Normalized ratio of agriculture:Pollinated agriculture:Yield to agriculture:Yield 
+			named pollinated_yield,
+		occurrence of agriculture:Pollinator biology:Insect 
+			named pollinator_occurrence
+	on definition set to [pollinator_occurrence - pollinated_yield]
+;

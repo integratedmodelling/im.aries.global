@@ -1,5 +1,7 @@
 namespace aries.global.recreation.tables;
 
+@fixme("whatever this shows, I can't believe that naturalness of bare 
+	   area is the opposite extreme of artificial surface")
 @documented(hemeroby_table)
 define HEMEROBY_TABLE as {{
 	
