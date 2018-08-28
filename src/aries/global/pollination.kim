@@ -2,8 +2,7 @@
 namespace aries.global.pollination
 	using (FLOWERING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE) 
 		from aries.global.pollination.tables;
-	
-@todo('put tables in appendix in the docs')
+
 @documented(pollination.nesting-suitability)
 model probability of agriculture:Pollinator ecology:Nesting
 	observing landcover:LandCoverType named landcover
@@ -41,8 +40,7 @@ model occurrence of agriculture:Pollinator biology:Insect
 			named insect_activity,
 		occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
 			named landscape_suitability
-	set to [insect_activity * (landscape_suitability/insect_activity.max)]
-;
+	set to [insect_activity * (landscape_suitability/insect_activity.max)];
 
 @documented(pollination.netbenefit)	
 model im:Net value of es.pollination:Pollination
@@ -51,5 +49,4 @@ model im:Net value of es.pollination:Pollination
 			named pollinated_yield,
 		occurrence of agriculture:Pollinator biology:Insect 
 			named pollinator_occurrence
-	set to [pollinator_occurrence - pollinated_yield]
-;
+	set to [pollinator_occurrence - pollinated_yield];
