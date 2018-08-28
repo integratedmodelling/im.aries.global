@@ -1,6 +1,6 @@
 namespace aries.global.pollination.tables;
 
-@documented(flower_availability)
+@documented(pollination.tables.flower-availability)
 define FLOWERING_PROBABILITY_TABLE as {{
 	
 	landcovertype                                   |  flowers

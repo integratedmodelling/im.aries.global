@@ -9,7 +9,7 @@ model probability of agriculture:Pollinator ecology:Nesting
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into NESTING_PROBABILITY_TABLE;
 
-@documented(pollination.flower-availability)
+
 model probability of ecology:Flowering
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into FLOWERING_PROBABILITY_TABLE;

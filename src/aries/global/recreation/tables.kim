@@ -45,7 +45,7 @@ define HEMEROBY_TABLE as {{
 	landcover:WaterBody                             |  1	
 }};
 
-@documented(recreation_opportunity_table)
+@documented(recreation.tables.opportunity)
 define RECREATION_OPPORTUNITY_TABLE as {{
 	
 	remoteness | recreation_potential | score |  description 
