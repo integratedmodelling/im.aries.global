@@ -1,6 +1,7 @@
 @documented(pollination)
 namespace aries.global.pollination
-	using (FLOWERING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE) from aries.global.pollination.tables;
+	using (FLOWERING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE) 
+		from aries.global.pollination.tables;
 	
 @todo('put tables in appendix in the docs')
 @documented(pollination.nesting-suitability)
