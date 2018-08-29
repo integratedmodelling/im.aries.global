@@ -36,7 +36,7 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 		distance to conservation:ProtectedArea in m named pristine_area_effect,
 		distance to earth:Coastline in m named coastline_effect,
 		distance to earth:Stream in m named stream_effect,
-		distance to earth:WaterBody in m named lake_effect,
+		distance to earth:WaterBody in m named lake_effect optional,
 		distance to earth:MountainPeak in m named mountain_effect
 	set to [
 		natural_attractiveness * 
