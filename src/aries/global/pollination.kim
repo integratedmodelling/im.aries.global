@@ -4,26 +4,26 @@ namespace aries.global.pollination
 		from aries.global.pollination.tables;
 
 @documented(pollination.nesting-suitability)
-model probability of agriculture:Pollinator ecology:Nesting
+model occurrence of agriculture:Pollinator ecology:Nesting
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into NESTING_PROBABILITY_TABLE;
 
 @documented(pollination.flower-availability)
-model probability of ecology:Flowering
+model occurrence of ecology:Flowering
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into FLOWERING_PROBABILITY_TABLE;
 
 @documented(pollination.insectoccurrence.landscape)	
 model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
 	observing
-		distance to earth:Stream in m named distance_to_streams,
-		distance to earth:Lake in m named distance_to_lakes,
-		probability of ecology:Flowering named flowering_probability,
-		probability of agriculture:Pollinator ecology:Nesting named nesting_probability
+		distance to earth:Stream in m   named distance_to_streams,
+		distance to earth:Lake in m     named distance_to_lakes,
+		occurrence of ecology:Flowering named flowering_suitability,
+		occurrence of agriculture:Pollinator ecology:Nesting named nesting_suitability
 	set to [
 		def lake_effect = distance_to_lakes < 1 ? 0 : Math.exp(-distance_to_lakes/0.5)
 		def stream_effect = distance_to_streams < 1 ? 0 : Math.exp(-distance_to_streams/0.5)
-		return stream_effect + lake_effect + (nesting_probability * flowering_probability)
+		return stream_effect + lake_effect + (nesting_suitability * flowering_suitability)
 	];
 
 @documented(pollination.insectoccurrence.landscape)	

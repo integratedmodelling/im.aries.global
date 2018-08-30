@@ -8,10 +8,9 @@ model im:Impedance of behavior:TravelConnection
 		im:Duration of behavior:TravelConnection in day named traveltime
 	set to [
 		traveltime < 0.02085 
-			? (451/(450 + Math.exp(1.12 * (10**-4)*citydistance)))  
-		    : (451/(450 + Math.exp(1.12 * (10**-4)*(citydistance + 30000))))
-	]
-;
+			? (451/(450 + Math.exp(1.12 * (10**-4) * citydistance)))  
+		    : (451/(450 + Math.exp(1.12 * (10**-4) * (citydistance + 30000))))
+	];
 
 @main(keywords=(), label="")
 @documented(recreation.values.actual)
@@ -19,8 +18,7 @@ model im:Realized value of behavior:Outdoors behavior:Enjoyment 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named traveltime,
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential
-	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE
-;
+	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE;
 
 @todo("use a clamping function for the nodata instead of the conditional")
 @todo("use sensible decay functions for all distances. Ensure that distances are treated properly")
@@ -34,9 +32,9 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 	observing 
 		magnitude of proportion of behavior:Outdoors in behavior:Enjoyment named natural_attractiveness,
 		distance to conservation:ProtectedArea in m named pristine_area_effect,
-		distance to earth:Coastline in m named coastline_effect,
-		distance to earth:Stream in m named stream_effect,
-		distance to earth:WaterBody in m named lake_effect optional,
+		distance to earth:Coastline in m    named coastline_effect,
+		distance to earth:Stream in m       named stream_effect,
+		distance to earth:WaterBody in m    named lake_effect optional,
 		distance to earth:MountainPeak in m named mountain_effect
 	set to [
 		natural_attractiveness * 
@@ -45,33 +43,26 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 			  + (nodata(stream_effect) ? 0 : stream_effect) 
 			  + (nodata(mountain_effect) ? 0 : mountain_effect) 
 			  + (nodata(coastline_effect) ? 0 : coastline_effect))
-	]
-;
+	];
 
 @main(/* TODO */)
 @documented(recreation.demand)
 model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
 	observing
-		im:Impedance of behavior:TravelConnection named impedance,
+		im:Impedance of behavior:TravelConnection         named impedance,
 		im:Normalized count of demography:HumanIndividual named population
-	set to [impedance + population/2]
-;
+	set to [impedance + population/2];
 
 @main(/* TODO */)
-@fixme('not sure about the equation at all - square roots?')
-@fixme("the normalization of the inputs seems like a trick to make this look right, but it's wrong. 
-        What is really needed is a stable scale for the potential, so both can be rescaled and compared.")
 @todo('appropriate colormap (linked to im:Net)')
 @documented(recreation.balance)
 model im:Net value of behavior:Outdoors behavior:Enjoyment -1 to 1
 	observing
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential,
 		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Enjoyment) named demand
-	set to [(potential ** 0.5) * (demand ** 0.5)]
-;
+	set to [(potential ** 0.5) * (demand ** 0.5)];
 
 @documented(recreation.hemeroby)
 private model magnitude of proportion of behavior:Outdoors in behavior:Enjoyment
 	observing landcover:LandCoverType named landcover
-	lookup (landcover, ?) into HEMEROBY_TABLE
-;
+	lookup (landcover, ?) into HEMEROBY_TABLE;
