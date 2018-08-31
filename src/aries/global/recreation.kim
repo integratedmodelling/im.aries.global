@@ -12,7 +12,6 @@ model im:Impedance of behavior:TravelConnection
 		    : (451/(450 + Math.exp(1.12 * (10**-4) * (citydistance + 30000))))
 	];
 
-@main(keywords=(), label="")
 @documented(recreation.values.actual)
 model im:Realized value of behavior:Outdoors behavior:Enjoyment 1 to 9
 	observing
@@ -20,13 +19,6 @@ model im:Realized value of behavior:Outdoors behavior:Enjoyment 1 to 9
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential
 	lookup (traveltime, potential, ?) into RECREATION_OPPORTUNITY_TABLE;
 
-@todo("use a clamping function for the nodata instead of the conditional")
-@todo("use sensible decay functions for all distances. Ensure that distances are treated properly")
-@todo("for later: use distance along various networks (road, air, walk) to supplement 
-	   the others for different classes of users instead of traveltime")
-@main(/* TODO */)
-@fixme("this needs to produce values in a known range")
-@fixme("this needs to produce what it says and not its opposite")
 @documented(recreation.values.potential)
 model im:Potential value of behavior:Outdoors behavior:Enjoyment
 	observing 
@@ -43,9 +35,8 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 			  + (nodata(stream_effect) ? 0 : stream_effect) 
 			  + (nodata(mountain_effect) ? 0 : mountain_effect) 
 			  + (nodata(coastline_effect) ? 0 : coastline_effect))
-	] then [self.invert];
+	] then [ self.invert() ];
 
-@main(/* TODO */)
 @documented(recreation.demand)
 model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
 	observing
@@ -53,7 +44,6 @@ model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
 		im:Normalized count of demography:HumanIndividual named population
 	set to [impedance + population/2];
 
-@main(/* TODO */)
 @todo('appropriate colormap (linked to im:Net)')
 @documented(recreation.balance)
 model im:Net value of behavior:Outdoors behavior:Enjoyment -1 to 1
