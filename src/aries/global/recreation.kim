@@ -43,7 +43,7 @@ model im:Potential value of behavior:Outdoors behavior:Enjoyment
 			  + (nodata(stream_effect) ? 0 : stream_effect) 
 			  + (nodata(mountain_effect) ? 0 : mountain_effect) 
 			  + (nodata(coastline_effect) ? 0 : coastline_effect))
-	];
+	] then [self.invert];
 
 @main(/* TODO */)
 @documented(recreation.demand)
