@@ -1,10 +1,12 @@
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
-@documented(recreation.impedance)
 model im:Impedance of behavior:TravelConnection
 	observing 
-		distance to infrastructure:City in m named distance_from_cities,
+	// switch to this when the resolver has been smartened
+//		distance to (infrastructure:City or infrastructure:Town or infrastructure:Village) in m
+		distance to infrastructure:City in m 
+			named distance_from_cities,
 		im:Duration of behavior:TravelConnection in day named travel_time
 	set to [
 		travel_time < 0.02085 
@@ -13,32 +15,32 @@ model im:Impedance of behavior:TravelConnection
 	];
 
 @documented(recreation.values.actual)
-model im:Realized value of behavior:Outdoors behavior:Enjoyment 1 to 9
+model im:Realized value of behavior:Outdoors behavior:Recreation 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named travel_time,
-		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential_enjoyment_supply
-	lookup (travel_time, potential_enjoyment_supply, ?) into RECREATION_OPPORTUNITY_TABLE;
+		im:Normalized (im:Potential value of behavior:Outdoors behavior:Recreation) named potential_recreation_supply
+	lookup (travel_time, potential_recreation_supply, ?) into RECREATION_OPPORTUNITY_TABLE;
 
 @documented(recreation.values.potential)
-model im:Potential value of behavior:Outdoors behavior:Enjoyment
+model im:Potential value of behavior:Outdoors behavior:Recreation
 	observing 
-		magnitude of proportion of behavior:Outdoors in behavior:Enjoyment named lack_of_naturalness,
-		distance to conservation:ProtectedArea in m named pristine_area_effect,
-		distance to earth:Coastline in m    named coastline_effect,
-		distance to earth:Stream in m       named stream_effect,
-		distance to earth:WaterBody in m    named lake_effect optional,
-		distance to earth:MountainPeak in m named mountain_effect
+		magnitude of proportion of behavior:Outdoors in behavior:Recreation named human_influence,
+		distance to conservation:ProtectedArea in m named distance_to_pristine_areas,
+		distance to earth:Coastline in m    named distance_to_coast,
+		distance to earth:Stream in m       named distance_to_streams,
+		distance to earth:WaterBody in m    named distance_to_lakes optional,
+		distance to earth:MountainPeak in m named distance_to_mountains
 	set to [
-		lack_of_naturalness * 
-		      ((nodata(pristine_area_effect) ? 0 : pristine_area_effect) 
-			  + (nodata(lake_effect) ? 0 : lake_effect) 
-			  + (nodata(stream_effect) ? 0 : stream_effect) 
-			  + (nodata(mountain_effect) ? 0 : mountain_effect) 
-			  + (nodata(coastline_effect) ? 0 : coastline_effect))
+		human_influence * 
+		      ((nodata(distance_to_pristine_areas) ? 0 : distance_to_pristine_areas) 
+			  + (nodata(distance_to_lakes) ? 0 : distance_to_lakes) 
+			  + (nodata(distance_to_streams) ? 0 : distance_to_streams) 
+			  + (nodata(distance_to_mountains) ? 0 : distance_to_mountains) 
+			  + (nodata(distance_to_coast) ? 0 : distance_to_coast))
 	] then [ self.invert() ];
 
 @documented(recreation.demand)
-model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
+model ses:Demanded value of behavior:Outdoors behavior:Recreation 0 to 2
 	observing
 		im:Impedance of behavior:TravelConnection         named impedance_for_travel,
 		im:Normalized count of demography:HumanIndividual named population_density_factor
@@ -48,13 +50,14 @@ model ses:Demanded value of behavior:Outdoors behavior:Enjoyment 0 to 2
       for outdoors recreation is not local by definition.')
 @todo('appropriate colormap (linked to im:Net)')
 @documented(recreation.balance)
-model im:Net value of behavior:Outdoors behavior:Enjoyment -1 to 1
+model im:Net value of behavior:Outdoors behavior:Recreation -1 to 1
 	observing
-		im:Normalized (im:Potential value of behavior:Outdoors behavior:Enjoyment) named potential_enjoyment_supply,
-		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Enjoyment) named demand_for_enjoyment
-	set to [(potential_enjoyment_supply ** 0.5) * (demand_for_enjoyment ** 0.5)];
+		im:Normalized (im:Potential value of behavior:Outdoors behavior:Recreation) named potential_recreation_supply,
+		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Recreation) named demand_for_recreation
+	set to [(potential_recreation_supply ** 0.5) * (demand_for_recreation ** 0.5)];
 
 @documented(recreation.hemeroby)
-private model magnitude of proportion of behavior:Outdoors in behavior:Enjoyment
+@todo('annotation is all wrong')
+private model magnitude of proportion of behavior:Outdoors in behavior:Recreation
 	observing landcover:LandCoverType named land_cover_type
 	lookup (land_cover_type, ?) into HEMEROBY_TABLE;
