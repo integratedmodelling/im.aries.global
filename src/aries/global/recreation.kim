@@ -1,17 +1,16 @@
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
+@todo('semantics is tentative')
 model im:Impedance of behavior:TravelConnection
 	observing 
-	// switch to this when the resolver has been smartened
-//		distance to (infrastructure:City or infrastructure:Town or infrastructure:Village) in m
-		distance to infrastructure:City in m 
-			named distance_from_cities,
+		distance from infrastructure:HumanSettlement in m 
+			named distance_from_human_settlements,
 		im:Duration of behavior:TravelConnection in day named travel_time
 	set to [
 		travel_time < 0.02085 
-			? (451/(450 + Math.exp(1.12 * (10**-4) * distance_from_cities)))  
-		    : (451/(450 + Math.exp(1.12 * (10**-4) * (distance_from_cities + 30000))))
+			? (451/(450 + Math.exp(1.12 * (10**-4) * distance_from_human_settlements)))  
+		    : (451/(450 + Math.exp(1.12 * (10**-4) * (distance_from_human_settlements + 30000))))
 	];
 
 @documented(recreation.values.actual)
@@ -46,15 +45,19 @@ model ses:Demanded value of behavior:Outdoors behavior:Recreation 0 to 2
 		im:Normalized count of demography:HumanIndividual named population_density_factor
 	set to [impedance_for_travel + population_density_factor/2];
 
-@todo('makes no sense unless aggregated between areas of greater demand and offer. Demand 
-      for outdoors recreation is not local by definition.')
-@todo('appropriate colormap (linked to im:Net)')
+@documented('recreation.value')
+model value of behavior:Outdoors behavior:Recreation 0 to 2
+	observing
+		im:Normalized (im:Potential value of behavior:Outdoors behavior:Recreation) named potential_recreation_supply,
+		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Recreation) named demand_for_recreation
+	set to [(potential_recreation_supply ** 0.5) * (demand_for_recreation ** 0.5)];
+
 @documented(recreation.balance)
 model im:Net value of behavior:Outdoors behavior:Recreation -1 to 1
 	observing
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Recreation) named potential_recreation_supply,
 		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Recreation) named demand_for_recreation
-	set to [(potential_recreation_supply ** 0.5) * (demand_for_recreation ** 0.5)];
+	set to [potential_recreation_supply - demand_for_recreation];
 
 @documented(recreation.hemeroby)
 @todo('annotation is all wrong')
