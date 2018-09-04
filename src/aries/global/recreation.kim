@@ -38,6 +38,7 @@ model im:Potential value of behavior:Outdoors behavior:Recreation
 			  + (nodata(distance_to_coast) ? 0 : distance_to_coast))
 	] then [ self.invert() ];
 
+@main
 @documented(recreation.demand)
 model ses:Demanded value of behavior:Outdoors behavior:Recreation 0 to 2
 	observing
@@ -46,7 +47,7 @@ model ses:Demanded value of behavior:Outdoors behavior:Recreation 0 to 2
 	set to [impedance_for_travel + population_density_factor/2];
 
 @documented('recreation.value')
-model value of behavior:Outdoors behavior:Recreation 0 to 2
+model value of behavior:Outdoors behavior:Recreation 0 to 1
 	observing
 		im:Normalized (im:Potential value of behavior:Outdoors behavior:Recreation) named potential_recreation_supply,
 		im:Normalized (ses:Demanded value of behavior:Outdoors behavior:Recreation) named demand_for_recreation
