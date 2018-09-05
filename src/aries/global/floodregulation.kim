@@ -1,2 +1,67 @@
 namespace aries.global.floodregulation;
 
+@documented(flood.rainfallintensity)
+model proportion of earth:PrecipitationVolume caused by earth:AtmosphericTemperature
+	"Temperature effect on rainfall intensity"
+	observing
+		earth:LatitudinalRegion named latitudinal_region,
+		im:Mean earth:AtmosphericTemperature during (earth:Wet earth:Season) in Celsius
+			named mean_wetseason_temperature,
+		im:Normalized (im:Mean earth:AtmosphericTemperature during (earth:Wet earth:Season)) in Celsius 
+			named normalized_wetseason_temperature
+	lookup (latitudinal_region, mean_wetseason_temperature) into
+	        region      |   mean_temperature  |     result
+	    ----------------------------------------------------------------
+	    earth:Polar     |         *           | [normalized_wetseason_temperature],
+	    earth:Tropical  |         *           | [1 - normalized_wetseason_temperature], 
+	    earth:Temperate |       < 22          | [normalized_wetseason_temperature],
+	    earth:Temperate |       > 22          | [1 - normalized_wetseason_temperature];
+
+@documented(flood.twi)		    
+model occurrence of earth:Region with im:Still earth:PrecipitationVolume 
+	observing 
+		geography:Slope in degree_angle named slope,
+		hydrology:ContributingArea in m^2 named contributing_area
+	set to [
+		def sloperadians = Math.tan((slope * 1.570796 ) / 90) 
+	  	def twi = Math.log( (contributing_area+1) / Math.tan( (sloperadians+0.001) ) );
+	  	return twi;
+	];
+
+@main
+@documented('flood.probability')
+model probability of earth:Flood
+	observing
+		im:Normalized (earth:PrecipitationVolume during im:Year) named precipitation,
+		im:Normalized (occurrence of earth:Region with im:Still earth:PrecipitationVolume) named water_permanence,
+		proportion of earth:PrecipitationVolume caused by earth:AtmosphericTemperature named temperature_rainfall_effect
+	set to [(precipitation + water_permanence + temperature_rainfall_effect)/3];
+
+@todo('move where it belongs')
+process FloodRegulation;
+
+@main
+@documented(flood.potential)
+model im:Potential value of FloodRegulation
+	observing 
+		hydrology:CurveNumber named curve_number,
+		probability of earth:Flood named flood_probability
+	set to [flood_probability - (curve_number * flood_probability / 100)];
+
+@main
+@documented(flood.demand)	
+model ses:Demanded value of FloodRegulation
+	observing
+		probability of earth:Flood named flood_probability,
+		count of demography:HumanIndividual per km^2 named population_density
+	set to [flood_probability * population_density];
+	
+@main
+@documented(flood.balance)
+model im:Net value of FloodRegulation
+	observing
+		im:Potential value of FloodRegulation named flood_regulation_supply,
+		ses:Demanded value of FloodRegulation named flood_regulation_demand
+	set to [flood_regulation_supply - (flood_regulation_demand/flood_regulation_demand.max)];
+
+	

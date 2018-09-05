@@ -1,0 +1,10 @@
+namespace aries.global.hydrology
+	using (CURVE_NUMBER_TABLE) from aries.global.water.tables;
+
+@todo('implement for various regions, as apparently this one is for Europe only, whatever that means.')
+model hydrology:CurveNumber
+	observing
+		geography:Slope in degree_angle named slope,
+		hydrology:HydrologicSoilGroup named hydrological_soil_group,
+		landcover:LandCoverType named landcover_type
+	lookup (landcover_type, slope, hydrological_soil_group, ?) into CURVE_NUMBER_TABLE;
