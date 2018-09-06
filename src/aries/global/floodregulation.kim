@@ -6,16 +6,16 @@ model proportion of earth:PrecipitationVolume caused by earth:AtmosphericTempera
 	observing
 		earth:LatitudinalRegion named latitudinal_region,
 		im:Mean earth:AtmosphericTemperature during (earth:Wet earth:Season) in Celsius
-			named mean_wetseason_temperature,
+			named mean_wet_season_temperature,
 		im:Normalized (im:Mean earth:AtmosphericTemperature during (earth:Wet earth:Season)) in Celsius 
-			named normalized_wetseason_temperature
-	lookup (latitudinal_region, mean_wetseason_temperature) into
+			named normalized_wet_season_temperature
+	lookup (latitudinal_region, mean_wet_season_temperature) into
 	        region      |   mean_temperature  |     result
 	    ----------------------------------------------------------------
-	    earth:Polar     |         *           | [normalized_wetseason_temperature],
-	    earth:Tropical  |         *           | [1 - normalized_wetseason_temperature], 
-	    earth:Temperate |       < 22          | [normalized_wetseason_temperature],
-	    earth:Temperate |       > 22          | [1 - normalized_wetseason_temperature];
+	    earth:Polar     |         *           | [normalized_wet_season_temperature],
+	    earth:Tropical  |         *           | [1 - normalized_wet_season_temperature], 
+	    earth:Temperate |       < 22          | [normalized_wet_season_temperature],
+	    earth:Temperate |       > 22          | [1 - normalized_wet_season_temperature];
 
 @documented(flood.twi)		    
 model occurrence of earth:Region with im:Still earth:PrecipitationVolume 

@@ -1,14 +1,46 @@
-namespace aries.global.sediment;
+namespace aries.global.sediment
+	using (C_FACTOR_TABLE, P_FACTOR_TABLE) from aries.global.sediment.tables;
 
 @documented(sediment.erodibility)
 model soil:SoilErodibility
 	observing
-		percentage of soil:Sand in soil:TopSoil im:Volume named percentsand,
-		percentage of soil:Silt in soil:TopSoil im:Volume named percentsilt,
-		percentage of soil:Clay in soil:TopSoil im:Volume named percentclay,
-		percentage of chemistry:Carbon in soil:TopSoil im:Mass named soilorganicmatter
-	set to [(0.2 + 0.3 * (Math.exp(-0.256 * percentsand * (1 - (percentsilt / 100))))) *
-		    ((percentsilt / (percentclay + percentsilt))**0.3) * 
-		    (1 - ((0.0256 * soilorganicmatter)/(soilorganicmatter + Math.exp(3.72 - (2.95 * soilorganicmatter))))) *
-		    (1 - ((0.7 * (1 - (percentsand / 100))) / ((1 - (percentsand / 100)) + Math.exp(-5.51 + (22.9 * (1 - percentsand / 100))))))
+		percentage of soil:Sand in soil:TopSoil im:Volume named sand_percentage,
+		percentage of soil:Silt in soil:TopSoil im:Volume named silt_percentage,
+		percentage of soil:Clay in soil:TopSoil im:Volume named clay_percentage,
+		percentage of chemistry:Carbon in soil:TopSoil im:Mass named soil_organic_matter
+	set to [(0.2 + 0.3 * (Math.exp(-0.256 * sand_percentage * (1 - (silt_percentage / 100))))) *
+		    ((silt_percentage / (clay_percentage + silt_percentage))**0.3) * 
+		    (1 - ((0.0256 * soil_organic_matter)/(soil_organic_matter + Math.exp(3.72 - (2.95 * soil_organic_matter))))) *
+		    (1 - ((0.7 * (1 - (sand_percentage / 100))) / ((1 - (sand_percentage / 100)) + Math.exp(-5.51 + (22.9 * (1 - sand_percentage / 100))))))
 	];
+	
+@fixme('semantics - LS factor')   
+model soil:SlopeSteepnessAndLength
+	observing
+		geography:Slope in degree_angle named slope,
+  		hydrology:ContributingArea in m^2 named contributing_area
+  	on definition set to [
+	  	Math.pow((contributing_area * space.width)/22.1, 0.4) * Math.pow(Math.sin(slope * 0.01745)/0.09, 1.4) * 1.4
+    ];
+   
+@fixme('semantics - c factor')   
+model soil:CoverManagement
+    observing landcover:LandCoverType named landcover
+    lookup (landcover) into C_FACTOR_TABLE;
+    
+@fixme(semantics)   
+model soil:SupportPractice
+    observing landcover:LandCoverType named landcover
+    lookup (landcover) into P_FACTOR_TABLE;
+
+@main(keywords = ('RUSLE' /* TODO */))
+@documented(sediment.rusle)    
+model im:Potential (im:Removed soil:Soil im:Mass) in t/ha
+	observing
+		soil:RainfallRunoffErosivity in (MJ*mm)/(ha*h) named r_factor,
+		soil:SoilErodibility 						   named k_factor, 
+		soil:SlopeSteepnessAndLength 				   named ls_factor,
+		soil:CoverManagement 						   named c_factor,
+		soil:SupportPractice 						   named p_factor
+	set to [(r_factor * k_factor * ls_factor * c_factor * p_factor)/2.47105];
+	

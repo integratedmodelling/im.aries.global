@@ -1,0 +1,42 @@
+namespace aries.global.sediment.tables;
+
+define C_FACTOR_TABLE as {{
+	
+	    land_cover_type                       | c_factor
+	-----------------------------------------------------
+	landcover:ArtificialSurface               | 0.1,
+    landcover:Forest                          | 0.001,
+    landcover:ScrubHerbaceousVegetation       | 0.08,
+    landcover:ArableLand                      |	0.5,
+    landcover:PermanentCropland               |	0.15,
+    landcover:Pastureland                     | 0.2,
+    landcover:HeterogeneousAgriculturalLand   | 0.25,
+    landcover:BareArea                        |	0.35,
+    landcover:LichenMoss                      |	0.35,
+    landcover:TransitionalWoodlandScrub       | 0.01,
+    //The next presents a mediation problem, made difficult beacuse CCI has both this and its child classes as possible data values.
+    landcover:SparseVegetation                |	0.01, 
+    landcover:SparseTreeCover                 |	0.01,
+    landcover:SparseShrubCover                |	0.01,
+    landcover:SparseHerbaceousCover           |	0.2,
+    landcover:BurnedLand                      |	0.35,
+    landcover:GlacierAndPerpetualSnow         | 0,
+    landcover:WaterBody                       | 0,
+    landcover:Wetland                         | 0.06
+}};
+
+define P_FACTOR_TABLE as {{
+	
+	       land_cover_type                     | p_factor
+	------------------------------------------------------
+    landcover:ArtificialSurface                | 1,
+    landcover:Forest                           | 1,
+    landcover:ScrubHerbaceousVegetation        | 1,
+    landcover:SeminaturalOpenSpace             | 1,
+    landcover:ArableLand                       | 0.5,
+    landcover:PermanentCropland                | 1,
+    landcover:Pastureland                      | 1,
+    landcover:HeterogeneousAgriculturalLand    | 0.8,
+	landcover:WaterBody                        | 1,
+	landcover:Wetland                          | 1
+}};
