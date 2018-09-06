@@ -1,2 +1,14 @@
 namespace aries.global.sediment;
 
+@documented(sediment.erodibility)
+model soil:SoilErodibility
+	observing
+		percentage of soil:Sand in soil:TopSoil im:Volume named percentsand,
+		percentage of soil:Silt in soil:TopSoil im:Volume named percentsilt,
+		percentage of soil:Clay in soil:TopSoil im:Volume named percentclay,
+		percentage of chemistry:Carbon in soil:TopSoil im:Mass named soilorganicmatter
+	set to [(0.2 + 0.3 * (Math.exp(-0.256 * percentsand * (1 - (percentsilt / 100))))) *
+		    ((percentsilt / (percentclay + percentsilt))**0.3) * 
+		    (1 - ((0.0256 * soilorganicmatter)/(soilorganicmatter + Math.exp(3.72 - (2.95 * soilorganicmatter))))) *
+		    (1 - ((0.7 * (1 - (percentsand / 100))) / ((1 - (percentsand / 100)) + Math.exp(-5.51 + (22.9 * (1 - percentsand / 100))))))
+	];
