@@ -27,7 +27,7 @@ model im:Potential value of behavior:Outdoors behavior:Recreation
 		distance to conservation:ProtectedArea in m named distance_to_pristine_areas,
 		distance to earth:Coastline in m    named distance_to_coast,
 		distance to earth:Stream in m       named distance_to_streams,
-		distance to earth:WaterBody in m    named distance_to_lakes optional,
+		distance to earth:WaterBody in m    named distance_to_lakes,
 		distance to earth:MountainPeak in m named distance_to_mountains
 	set to [
 		human_influence * 

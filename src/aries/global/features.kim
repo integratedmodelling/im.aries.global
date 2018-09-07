@@ -19,6 +19,6 @@ model each conservation:ProtectedArea
 	using gis.features.extract(select = [protected_status]);
 
 @reliability(25)
-model each earth:Lake
+model each earth:WaterBody
 	observing presence of earth:WaterBody named waterbody_presence
 	using gis.features.extract(select = [waterbody_presence], simplify = true );
