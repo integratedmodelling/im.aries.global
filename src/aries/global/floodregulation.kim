@@ -37,12 +37,9 @@ model probability of earth:Flood
 		proportion of earth:PrecipitationVolume caused by earth:AtmosphericTemperature named temperature_rainfall_effect
 	set to [(precipitation + water_permanence + temperature_rainfall_effect)/3];
 
-@todo('move where it belongs')
-process FloodRegulation;
-
 @main
 @documented(flood.potential)
-model im:Potential value of FloodRegulation
+model im:Potential value of es:FloodRegulation
 	observing 
 		hydrology:CurveNumber named curve_number,
 		probability of earth:Flood named flood_probability
@@ -50,7 +47,7 @@ model im:Potential value of FloodRegulation
 
 @main
 @documented(flood.demand)	
-model ses:Demanded value of FloodRegulation
+model ses:Demanded value of es:FloodRegulation
 	observing
 		probability of earth:Flood named flood_probability,
 		count of demography:HumanIndividual per km^2 named population_density
@@ -58,10 +55,10 @@ model ses:Demanded value of FloodRegulation
 	
 @main
 @documented(flood.balance)
-model im:Net value of FloodRegulation
+model im:Net value of es:FloodRegulation
 	observing
-		im:Potential value of FloodRegulation named flood_regulation_supply,
-		ses:Demanded value of FloodRegulation named flood_regulation_demand
+		im:Potential value of es:FloodRegulation named flood_regulation_supply,
+		ses:Demanded value of es:FloodRegulation named flood_regulation_demand
 	set to [flood_regulation_supply - (flood_regulation_demand/flood_regulation_demand.max)];
 
 	
