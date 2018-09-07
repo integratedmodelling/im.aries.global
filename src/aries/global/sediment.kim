@@ -51,6 +51,7 @@ model im:Potential (im:Removed soil:Soil im:Mass) in t/ha
 // TODO check semantics with authors, provide quick access	
 // CHECK OK should add p_factor in rulsv? not in original but seems to change results a lot
 @main
+@documented(sediment.retention)
 model im:Retained soil:Soil im:Mass caused by ecology:Vegetation in t/ha
 	observing
 		soil:RainfallRunoffErosivity in (MJ*mm)/(ha*h)    named r_factor,
