@@ -1,5 +1,5 @@
 namespace aries.global.sediment
-	using (C_FACTOR_TABLE, P_FACTOR_TABLE) from aries.global.sediment.tables;
+	using (C_FACTOR_TABLE, P_FACTOR_TABLE, C_FACTOR_TABLE_UNVEGETATED) from aries.global.sediment.tables;
 
 @documented(sediment.erodibility)
 model soil:SoilErodibility
@@ -27,6 +27,10 @@ model soil:SlopeSteepnessAndLength
 model soil:CoverManagement
     observing landcover:LandCoverType named landcover
     lookup (landcover) into C_FACTOR_TABLE;
+
+model soil:CoverManagement caused by ecology:Vegetation
+    observing landcover:LandCoverType named landcover
+    lookup (landcover) into C_FACTOR_TABLE_UNVEGETATED;
     
 @fixme(semantics)   
 model soil:SupportPractice
@@ -43,4 +47,22 @@ model im:Potential (im:Removed soil:Soil im:Mass) in t/ha
 		soil:CoverManagement 						   named c_factor,
 		soil:SupportPractice 						   named p_factor
 	set to [(r_factor * k_factor * ls_factor * c_factor * p_factor)/2.47105];
+
+// TODO check semantics with authors, provide quick access	
+// CHECK OK should add p_factor in rulsv? not in original but seems to change results a lot
+@main
+model im:Retained soil:Soil im:Mass caused by ecology:Vegetation in t/ha
+	observing
+		soil:RainfallRunoffErosivity in (MJ*mm)/(ha*h)    named r_factor,
+		soil:SoilErodibility 						      named k_factor, 
+		soil:SlopeSteepnessAndLength 				      named ls_factor,
+		soil:CoverManagement 						      named c_factor,
+		soil:CoverManagement caused by ecology:Vegetation named c_factor_unvegetated,
+		soil:SupportPractice 						      named p_factor
+	set to [
+		def rusle = (r_factor * k_factor * ls_factor * c_factor * p_factor)
+		def ruslv = (r_factor * k_factor * ls_factor * c_factor_unvegetated)
+		return (ruslv - rusle)/2.47105
+	];
+		
 	

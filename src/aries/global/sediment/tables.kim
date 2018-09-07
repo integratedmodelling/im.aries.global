@@ -25,6 +25,32 @@ define C_FACTOR_TABLE as {{
     landcover:Wetland                         | 0.06
 }};
 
+define C_FACTOR_TABLE_UNVEGETATED as {{
+	
+	    land_cover_type                       | c_factor
+	-----------------------------------------------------
+    landcover:ArtificialSurface               | 0.1,
+    landcover:Forest                          | 0.35,
+    landcover:ScrubHerbaceousVegetation       | 0.35,
+    landcover:ArableLand                      | 0.35,
+    landcover:NonIrrigatedArableLand          | 0.35,
+    landcover:InactiveAgriculturalLand        | 0.35,
+    landcover:PermanentlyIrrigatedArableLand  | 0.35,
+    landcover:RiceField                       | 0.35,
+    landcover:PermanentCropland               | 0.35,
+    landcover:Pastureland                     | 0.35,
+    landcover:HeterogeneousAgriculturalLand   | 0.35,
+    landcover:BareArea                        | 0.35,
+    landcover:LichenMoss                      | 0.35,
+    landcover:SparseTreeCover                 | 0.35,
+    landcover:SparseShrubCover                | 0.35,
+    landcover:SparseHerbaceousCover           | 0.35,
+    landcover:BurnedLand                      | 0.35,
+    landcover:GlacierAndPerpetualSnow         | 0,
+    landcover:WaterBody                       | 0,
+    landcover:Wetland                         | 0.35
+}};
+
 define P_FACTOR_TABLE as {{
 	
 	       land_cover_type                     | p_factor
