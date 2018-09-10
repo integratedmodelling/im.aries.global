@@ -16,7 +16,7 @@ model probability of ecology:Flowering
 @documented(pollination.insectoccurrence.landscape)	
 model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
 	observing
-		distance to earth:Stream in m    named distance_to_streams,
+		distance to earth:Waterway in m  named distance_to_streams,
 		distance to earth:WaterBody in m named distance_to_lakes,
 		probability of ecology:Flowering named flowering_suitability,
 		occurrence of agriculture:Pollinator ecology:Nesting named nesting_suitability
