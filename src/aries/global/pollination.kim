@@ -17,12 +17,12 @@ model probability of ecology:Flowering
 model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
 	observing
 		distance to earth:Waterway in m  named distance_to_streams,
-		distance to earth:WaterBody in m named distance_to_lakes,
+		distance to earth:WaterBody in m named distance_to_large_lakes,
 		probability of ecology:Flowering named flowering_suitability,
 		occurrence of agriculture:Pollinator ecology:Nesting named nesting_suitability
 	set to [
-		def lake_effect = distance_to_lakes < 1 ? 0 : Math.exp(-distance_to_lakes/0.5)
-		def stream_effect = distance_to_streams < 1 ? 0 : Math.exp(-distance_to_streams/0.5)
+		def lake_effect   = nodata(distance_to_large_lakes) ? 0 : Math.exp(-distance_to_large_lakes/0.5)
+		def stream_effect = nodata(distance_to_streams)     ? 0 : Math.exp(-distance_to_streams/0.5)
 		return stream_effect + lake_effect + (nesting_suitability * flowering_suitability)
 	];
 
@@ -47,7 +47,7 @@ model occurrence of agriculture:Pollinator biology:Insect
 @documented(pollination.netbenefit)	
 model im:Net value of ecology:Pollination
 	observing
-		im:Normalized ratio of agriculture:Pollinated agriculture:Yield to agriculture:Yield 
+		im:Normalized ratio of agriculture:Pollinated agriculture:Yield to agriculture:Yield
 			named pollinated_yield,
 		occurrence of agriculture:Pollinator biology:Insect 
 			named pollinator_occurrence
