@@ -1,10 +1,11 @@
 {
 	"pollination.nesting-suitability#Definition#Methods": {
-		"trigger": "Definition",
+		"trigger": "DEFINITION",
+		"sectionType": "METHODS",
 		"section": "Methods",
 		"documentedId": "pollination.nesting-suitability",
 		"extended": null,
-		"template": "*Nesting suitability*, representing the probability that pollinator nesting happens within the land parcel, is computed using values assigned to different land cover categories by experts in previous studies (@cite('Zulian2013')).",
+		"template": "@section('Nesting suitability')\r\n\r\nThe region of interest @refdescription(self) is evaluated for the probability of occurrence of pollinator nesting, using a look-up table that matches land cover types to likely occurrence probability. The table is based on expert opinion and is part of the ESTIMAP pollination model @cite(zulian.2013).\r\n\r\n@describe(self)\r\n",
 		"documentedUrns": [
 			"aries.global.pollination.nesting-resolver"
 		],
@@ -13,11 +14,12 @@
 		}
 	},
 	"pollination.flower-availability#Definition#Methods": {
-		"trigger": "Definition",
+		"trigger": "DEFINITION",
+		"sectionType": "METHODS",
 		"section": "Methods",
 		"documentedId": "pollination.flower-availability",
 		"extended": null,
-		"template": "@describe(self)\r\n\r\n*Floral availability*, representing the probability that flowering occurs in the land parce, is assigned by  land cover categories using the following table based on expert opinion (@cite('Zulian2013')):\r\n\r\n@describe(pollination.tables.flower-availability)\r\n",
+		"template": "@section('Flower availability')\r\n\r\nThe region of interest @refdescription(self) is evaluated for the probability of flowering for species that serve as food for pollinators. The probability is computed using a look-up table that matches land cover types to likely occurrence probability. The table is based on expert opinion and is part of the ESTIMAP pollination model @cite(zulian.2013).\r\n\r\n@describe(self)\r\n",
 		"documentedUrns": [
 			"aries.global.pollination.flowering-resolver"
 		],
