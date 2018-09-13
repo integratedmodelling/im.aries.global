@@ -50,9 +50,10 @@ or more stakeholders.
 
 As ARIES operates on conceptual queries, the model content provided here does not 
 implement monolithic "models" of ES, but rather provides the logical and computational 
-underpinning to _resolve_ ES-related user queries. These can be entered in the ARIES 
-Explorer interface as English sentences as exemplified below, or chosen from a customizable 
-palette of concepts of interest. 
+underpinning to _resolve_ ES-related user queries in a user-selected spatial and 
+temporal context. These can be entered in the ARIES Explorer interface as English 
+sentences, as exemplified below, or chosen from a customizable "palette" of concepts 
+of interest.
 
 Some example queries per each ES category whose value is available globally at regional 
 to country scales and with seasonal to annual temporal scale:
@@ -76,6 +77,11 @@ to country scales and with seasonal to annual temporal scale:
 * Sediment retention:
     * Potential Removed Soil Mass [in t/ha or other units]
     * Retained Soil Mass caused by Vegetation [as above]
+
+For all of these queries, ARIES will build a spatially explicit observation, in most 
+situations as a raster GIS coverage of user-selected resolution. The results will 
+reflect the contents of the ARIES semantic web at the time of query; nearly all supporting 
+data are currently available at spatial resolution ranging between 1km and 90m.
 
 # Platform
 
