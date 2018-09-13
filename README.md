@@ -58,24 +58,24 @@ Some example queries per each ES category whose value is available globally at r
 to country scales and with seasonal to annual temporal scale:
 
 * Flood regulation:
-  - probability of Flood
-  - Potential value of FloodRegulation
-  - Demanded value of FloodRegulation
-  - Net value of FloodRegulation (surplus/deficit)
+    * probability of Flood
+    * Potential value of FloodRegulation
+    * Demanded value of FloodRegulation
+    * Net value of FloodRegulation (surplus/deficit)
 * Outdoors recreation:
-  - Realized value of Outdoors Recreation
-  - Potential value of Outdoors Recreation
-  - Demanded value of Outdoors Recreation
-  - value of Outdoors Recreation (production function combining supply and demand)
-  - Net value of Outdoors Recreation (surplus/deficit)
+    * Realized value of Outdoors Recreation
+    * Potential value of Outdoors Recreation
+    * Demanded value of Outdoors Recreation
+    * value of Outdoors Recreation (production function combining supply and demand)
+    * Net value of Outdoors Recreation (surplus/deficit)
 * Pollination:
-  - Occurrence of Pollinator Insect caused by Weather
-  - Occurrence of Pollinator Insect caused by Landscape
-  - Occurrence of Pollinator Insect
-  - Net value of Pollination (surplus/deficit)
+    * Occurrence of Pollinator Insect caused by Weather
+    * Occurrence of Pollinator Insect caused by Landscape
+    * Occurrence of Pollinator Insect
+    * Net value of Pollination (surplus/deficit)
 * Sediment retention:
-  - Potential Removed Soil Mass [in t/ha or other units]
-  - Retained Soil Mass caused by Vegetation [as above]
+    * Potential Removed Soil Mass [in t/ha or other units]
+    * Retained Soil Mass caused by Vegetation [as above]
 
 # Platform
 
