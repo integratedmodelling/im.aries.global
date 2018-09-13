@@ -1,11 +1,12 @@
 # Global supply-demand ecosystem service models for ARIES
 
 This project contains a baseline conceptualization of ecosystem services (ES) supply 
-and demand for the ARIES platform. The logical statements, data and models provided 
-here are used in ARIES to answer queries for commonly recognized ES value metrics 
-when not enough information is available to build detailed, dynamic flow models. 
+and demand for the [ARIES](http://aries.integratedmodelling.org) platform. The logical 
+statements, data and models provided here are used in ARIES to answer queries for 
+commonly recognized ES value metrics when not enough information is available to 
+build detailed, dynamic flow models. 
 
-The models built by ARIES using such statements have, in general, similar resolution 
+The models built by ARIES using this knowledge have, in general, similar resolution 
 and conceptual detail as those available in other ES assessment toolkits such as 
 InVEST or ESTIMAP. Some of the methods implemented in this project are inspired by 
 or derived from others; when so, sources are credited in the documentation built 
@@ -57,24 +58,24 @@ Some example queries per each ES category whose value is available globally at r
 to country scales and with seasonal to annual temporal scale:
 
 * Flood regulation:
-- probability of Flood
-- Potential value of FloodRegulation
-- Demanded value of FloodRegulation
-- Net value of FloodRegulation (surplus/deficit)
+  - probability of Flood
+  - Potential value of FloodRegulation
+  - Demanded value of FloodRegulation
+  - Net value of FloodRegulation (surplus/deficit)
 * Outdoors recreation:
-- Realized value of Outdoors Recreation
-- Potential value of Outdoors Recreation
-- Demanded value of Outdoors Recreation
-- value of Outdoors Recreation (production function combining supply and demand)
-- Net value of Outdoors Recreation (surplus/deficit)
+  - Realized value of Outdoors Recreation
+  - Potential value of Outdoors Recreation
+  - Demanded value of Outdoors Recreation
+  - value of Outdoors Recreation (production function combining supply and demand)
+  - Net value of Outdoors Recreation (surplus/deficit)
 * Pollination:
-- Occurrence of Pollinator Insect caused by Weather
-- Occurrence of Pollinator Insect caused by Landscape
-- Occurrence of Pollinator Insect
-- Net value of Pollination (surplus/deficit)
+  - Occurrence of Pollinator Insect caused by Weather
+  - Occurrence of Pollinator Insect caused by Landscape
+  - Occurrence of Pollinator Insect
+  - Net value of Pollination (surplus/deficit)
 * Sediment retention:
-- Potential Removed Soil Mass [in t/ha or other units]
-- Retained Soil Mass caused by Vegetation [as above]
+  - Potential Removed Soil Mass [in t/ha or other units]
+  - Retained Soil Mass caused by Vegetation [as above]
 
 # Platform
 
@@ -101,6 +102,9 @@ time of this writing, and will be linked here as soon as publicly available.
 These models, like the entirety of the k.LAB infrastructure that runs them, are open 
 source, released under the terms of the Affero General Public License 3.0 or any 
 higher version.
+
+The intellectual property of this content belongs to the Integrated Modelling Partnership 
+and all individually listed authors.
 
 # Contact
 
