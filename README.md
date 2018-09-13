@@ -16,8 +16,9 @@ The latest version of the content of this project is served by the ARIES semanti
 network and is thus available to any user of the ARIES platform, i.e. anyone who 
 is using the k.LAB Explorer or Modeler software (locally or, when available, online) 
 and has obtained a certificate that includes ARIES. No further downloads or installations 
-are required. Details on how to obtain a certificate can be found at the [ARIES](http://aries.integratedmodelling.org) 
-or the [Integrated Modelling Partnership](http://www.integratedmodelling.org)} web 
+are required. Details on how to obtain a certificate can be found at the 
+[ARIES](http://aries.integratedmodelling.org) or the 
+[Integrated Modelling Partnership](http://www.integratedmodelling.org) web 
 sites.
 
 The models can run everywhere on the globe without user input. Customization of data, 
@@ -39,7 +40,8 @@ ES problem areas:
 Areas in development for a forthcoming release in the short term include:
 
 * Mariculture suitability
-* Water availability
+* Water availability (based on hydrological calculations)
+* Biodiversity value (based on machine learning of expert opinion)
 
 In addition, this project provides a bridge to Multiple Criteria Analysis models 
 that allow automated *trade-off analysis* between diverse ES metrics, combined with 
@@ -50,7 +52,7 @@ or more stakeholders.
 
 As ARIES operates on conceptual queries, the model content provided here does not 
 implement monolithic "models" of ES, but rather provides the logical and computational 
-underpinning to _resolve_ ES-related user queries in a user-selected spatial and 
+underpinnings to _resolve_ ES-related user queries in a user-selected spatial and 
 temporal context. These can be entered in the ARIES Explorer interface as English 
 sentences, as exemplified below, or chosen from a customizable "palette" of concepts 
 of interest.
