@@ -2,23 +2,27 @@
 
 This project contains a baseline conceptualization of ecosystem services (ES) supply 
 and demand for the ARIES platform. The logical statements, data and models provided 
-here that are used to build observations of commonly recognized ecosystem service 
-value metrics when not enough information is available to build more detailed, dynamic 
-flow models. The models built by ARIES using such statements have, in general, similar 
-resolution and conceptual detail as those available in other ES assessment toolkits 
-such as InVEST or ESTIMAP. Some of the methods implemented in this project are inspired 
-by or derived from others; all sources are credited in the report built during each 
-session.
+here are used in ARIES to answer queries for commonly recognized ES value metrics 
+when not enough information is available to build detailed, dynamic flow models. 
 
-These models are served by the ARIES network and are thus available to any user of 
-the ARIES platform, i.e. anyone who is using the k.LAB Explorer or Modeler software 
-(locally or online) and has obtained a certificate that includes ARIES. No further 
-downloads or installations are required. Details on how to obtain a certificate can 
-be found at the [ARIES](http://aries.integratedmodelling.org) or the [Integrated Modelling Partnership](http://www.integratedmodelling.org)} 
-web sites.
+The models built by ARIES using such statements have, in general, similar resolution 
+and conceptual detail as those available in other ES assessment toolkits such as 
+InVEST or ESTIMAP. Some of the methods implemented in this project are inspired by 
+or derived from others; when so, sources are credited in the documentation built 
+during each ARIES session.
 
-The models can run everywhere on the globe without user input. Due to the nature 
-of the ARIES semantic web platform, ....
+The latest version of the content of this project is served by the ARIES semantic 
+network and is thus available to any user of the ARIES platform, i.e. anyone who 
+is using the k.LAB Explorer or Modeler software (locally or, when available, online) 
+and has obtained a certificate that includes ARIES. No further downloads or installations 
+are required. Details on how to obtain a certificate can be found at the [ARIES](http://aries.integratedmodelling.org) 
+or the [Integrated Modelling Partnership](http://www.integratedmodelling.org)} web 
+sites.
+
+The models can run everywhere on the globe without user input. Customization of data, 
+models and scenarios is possible using the k.LAB Modeler at the time of this writing. 
+Drag-and-drop input of user data, as well as scenario analysis, will be made possible 
+through the k.LAB Explorer in 2019.
 
 # Contents and use
 
@@ -38,8 +42,8 @@ Areas in development for a forthcoming release in the short term include:
 
 In addition, this project provides a bridge to Multiple Criteria Analysis models 
 that allow automated *trade-off analysis* between diverse ES metrics, combined with 
-user-specified weights that encode priorities according to the point of view of 
-one or more stakeholders.
+user-specified weights that encode priorities according to the point of view of one 
+or more stakeholders.
 
 ## Example queries
 
