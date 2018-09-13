@@ -1,9 +1,9 @@
 # Global supply-demand ecosystem service models for ARIES
 
-This project contains the baseline conceptualization of ecosystem services supply 
-and demand for the ARIES platform. A set of commonly recognized ecosystem service 
-categories is represented in ARIES by a suite of logical statements, data and models 
-that are used when not enough information is available to build more detailed, dynamic 
+This project contains a baseline conceptualization of ecosystem services (ES) supply 
+and demand for the ARIES platform. The logical statements, data and models provided 
+here that are used to build observations of commonly recognized ecosystem service 
+value metrics when not enough information is available to build more detailed, dynamic 
 flow models. The models built by ARIES using such statements have, in general, similar 
 resolution and conceptual detail as those available in other ES assessment toolkits 
 such as InVEST or ESTIMAP. Some of the methods implemented in this project are inspired 
@@ -22,13 +22,55 @@ of the ARIES semantic web platform, ....
 
 # Contents and use
 
-As released, the project contains 
+As released, the project contains fully specified model content concerning the following 
+ES problem areas:
+
+* Riverine flood regulation
+* Carbon storage
+* Outdoors recreation
+* Pollination
+* Sediment retention
+
+Areas in development for a forthcoming release in the short term include:
+
+* Mariculture suitability
+* Water availability
+
+In addition, this project provides a bridge to Multiple Criteria Analysis models 
+that allow automated *trade-off analysis* between diverse ES metrics, combined with 
+user-specified weights that encode priorities according to the point of view of 
+one or more stakeholders.
 
 ## Example queries
 
-... some example queries per each category of services (palette)
+As ARIES operates on conceptual queries, the model content provided here does not 
+implement monolithic "models" of ES, but rather provides the logical and computational 
+underpinning to _resolve_ ES-related user queries. These can be entered in the ARIES 
+Explorer interface as English sentences as exemplified below, or chosen from a customizable 
+palette of concepts of interest. 
 
-## Forthcoming
+Some example queries per each ES category whose value is available globally at regional 
+to country scales and with seasonal to annual temporal scale:
+
+* Flood regulation:
+- probability of Flood
+- Potential value of FloodRegulation
+- Demanded value of FloodRegulation
+- Net value of FloodRegulation (surplus/deficit)
+* Outdoors recreation:
+- Realized value of Outdoors Recreation
+- Potential value of Outdoors Recreation
+- Demanded value of Outdoors Recreation
+- value of Outdoors Recreation (production function combining supply and demand)
+- Net value of Outdoors Recreation (surplus/deficit)
+* Pollination:
+- Occurrence of Pollinator Insect caused by Weather
+- Occurrence of Pollinator Insect caused by Landscape
+- Occurrence of Pollinator Insect
+- Net value of Pollination (surplus/deficit)
+* Sediment retention:
+- Potential Removed Soil Mass [in t/ha or other units]
+- Retained Soil Mass caused by Vegetation [as above]
 
 # Platform
 
@@ -69,5 +111,3 @@ be directed to info@integratedmodelling.org.
 * Javier Martínez-Lopez (javier.martinez@bc3research.org)
 * Ferdinando Villa (ferdinando.villa@bc3research.org)
 * Brian Voigt (bvoigt@uvm.edu)
-
-Sources for data and algorithms are credited in the documentation.
