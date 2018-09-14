@@ -31,7 +31,7 @@ define FLOWERING_PROBABILITY_TABLE as {{
 	
 }};
 
-@documented(nesting_suitability)
+@documented(pollination.tables.nestingsuitability.global)
 define NESTING_PROBABILITY_TABLE as {{
 	
 	landcovertype                                    |  nestingsuitability
@@ -60,4 +60,48 @@ define NESTING_PROBABILITY_TABLE as {{
 	landcover:Wetland                                |   0.3,
 	landcover:WaterBody                              |   0
 	
+}};
+
+@documented(pollination.tables.nestingsuitability.usa)
+define NESTING_PROBABILITY_TABLE_USA as {{
+
+	landcovertype                       |  nestingsuitability
+	---------------------------------------------------------------------
+	landcover:WaterBody                 | 0,
+	landcover:GlacierAndPerpetualSnow   | 0,
+	landcover:ArtificialVegetatedArea   | 0.32,
+	landcover:DiscontinuousUrbanFabric  | 0.29,
+	landcover:MediumDensityUrban        | 0.17,
+	landcover:HighDensityUrban          | 0.09,
+	landcover:BareArea                  | 0.21,
+	landcover:BroadleafForest           | 0.55,	
+	landcover:ConiferousForest          | 0.44,
+	landcover:MixedForest               | 0.68,
+	landcover:MoorAndHeathland          | 0.72,
+	landcover:NaturalGrassland          | 0.38,
+	landcover:Pastureland               | 0.38,	
+	landcover:ArableLand                | 0.24,
+	landcover:Wetland                   | 0.19
+	
+}};
+
+@documented(pollination.tables.flower-availability.usa)
+define FLOWERING_PROBABILITY_TABLE_USA as {{
+		landcovertype                   |  flowers
+	------------------------------------------------------------
+	landcover:WaterBody                 | 0,
+	landcover:GlacierAndPerpetualSnow   | 0,
+	landcover:ArtificialVegetatedArea   | 0.49,
+	landcover:DiscontinuousUrbanFabric  | 0.54,
+	landcover:MediumDensityUrban        | 0.44,
+	landcover:HighDensityUrban          | 0.34,
+	landcover:BareArea                  | 0.25,
+	landcover:BroadleafForest           | 0.53,	
+	landcover:ConiferousForest          | 0.42,
+	landcover:MixedForest               | 0.48,
+	landcover:MoorAndHeathland          | 0.56,
+	landcover:NaturalGrassland          | 0.45,
+	landcover:Pastureland               | 0.45,	
+	landcover:ArableLand                | 0.31,
+	landcover:Wetland                   | 0.48
 }};

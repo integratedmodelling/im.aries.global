@@ -1,6 +1,6 @@
 @documented(pollination)
 namespace aries.global.pollination
-	using (FLOWERING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE) 
+	using (FLOWERING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE, NESTING_PROBABILITY_TABLE_USA, FLOWERING_PROBABILITY_TABLE_USA) 
 		from aries.global.pollination.tables;
 
 @documented(pollination.nesting-suitability)
@@ -8,10 +8,22 @@ model occurrence of agriculture:Pollinator ecology:Nesting
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into NESTING_PROBABILITY_TABLE;
 
+@documented(pollination.nesting-suitability)
+model occurrence of agriculture:Pollinator ecology:Nesting
+	observing landcover:LandCoverType named landcover
+	lookup (landcover) into NESTING_PROBABILITY_TABLE_USA
+	over space(urn = 'local:ferdinando.villa:im.data.bicitre:aries_continental_regions#region=North America');
+
 @documented(pollination.flower-availability)
 model probability of ecology:Flowering
 	observing landcover:LandCoverType named landcover
 	lookup (landcover) into FLOWERING_PROBABILITY_TABLE;
+
+@documented(pollination.flower-availability)
+model probability of ecology:Flowering
+	observing landcover:LandCoverType named landcover
+	lookup (landcover) into FLOWERING_PROBABILITY_TABLE_USA
+	over space(urn = 'local:ferdinando.villa:im.data.bicitre:aries_continental_regions#region=North America');
 
 @documented(pollination.insectoccurrence.landscape)	
 model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Landscape
