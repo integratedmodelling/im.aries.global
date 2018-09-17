@@ -77,9 +77,14 @@ to country scales and with seasonal to annual temporal scale:
     * Occurrence of Pollinator Insect
     * Net value of Pollination (surplus/deficit)
 * Sediment retention:
-    * Potential Removed Soil Mass [in t/ha or other units]
-    * Retained Soil Mass caused by Vegetation [as above]
-
+    * Potential Removed Soil Mass
+    * Retained Soil Mass caused by Vegetation
+* Carbon storage:
+    * Organic Carbon Mass      [total soil and vegetation storage]
+    * Vegetation Carbon Mass   [total vegetation storage]
+    * Soil Organic Carbon Mass [total soil storage]
+    * Mangrove Carbon Mass     [mangrove above and below-ground storage]
+      
 For all of these queries, ARIES will build a spatially explicit observation, in most 
 situations as a raster GIS coverage of user-selected resolution. The results will 
 reflect the contents of the ARIES semantic web at the time of query; nearly all supporting 
