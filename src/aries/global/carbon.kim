@@ -1,2 +1,14 @@
-namespace aries.global.carbon;
+namespace aries.global.carbon
+	using (VEGETATION_CARBON_TABLE) from aries.global.carbon.tables;
 	
+@documented(carbon.global.vegetation)
+model ecology:Vegetation chemistry:Carbon im:Mass in t/ha
+	observing
+		landcover:LandCoverType named land_cover_type,
+		presence of chemistry:Burned earth:Region named burned_land,
+		geography:ContinentalRegion named continental_region,
+		presence of (not conservation:Pristine) earth:Region named degraded_forest,
+		ecology:EcoFloristicRegionType named ecofloristic_region
+	lookup (land_cover_type, ecofloristic_region, continental_region, degraded_forest, burned_land, ?) 
+		into VEGETATION_CARBON_TABLE;
+		
