@@ -1,3 +1,0 @@
-namespace aries.global.carbon.vegetation
-	using (VEGETATION_CARBON_TABLE) from aries.global.carbon.tables;
-
