@@ -16,6 +16,6 @@ model ecology:Vegetation chemistry:Carbon im:Mass in t/ha
 		geography:ContinentalRegion named continental_region,
 		presence of im:Critical conservation:Pristine ecology:Forest earth:Region named frontier_forest,
 		ecology:EcoFloristicRegionType named ecofloristic_region
-	lookup (land_cover_type, ecofloristic_region, continental_region, degraded_forest, burned_land, ?) 
+	lookup (land_cover_type, ecofloristic_region, continental_region, frontier_forest, burned_land, ?) 
 		into VEGETATION_CARBON_TABLE;
 		
