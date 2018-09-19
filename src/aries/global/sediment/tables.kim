@@ -14,7 +14,6 @@ define C_FACTOR_TABLE as {{
     landcover:BareArea                        |	0.35,
     landcover:LichenMoss                      |	0.35,
     landcover:TransitionalWoodlandScrub       | 0.01,
-    //The next presents a mediation problem, made difficult beacuse CCI has both this and its child classes as possible data values.
     landcover:SparseVegetation                |	0.01, 
     landcover:SparseTreeCover                 |	0.01,
     landcover:SparseShrubCover                |	0.01,

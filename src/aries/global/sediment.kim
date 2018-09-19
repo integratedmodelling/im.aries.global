@@ -48,8 +48,6 @@ model im:Potential (im:Removed soil:Soil im:Mass) in t/ha
 		soil:SupportPractice 						   named p_factor
 	set to [(r_factor * k_factor * ls_factor * c_factor * p_factor)/2.47105];
 
-// TODO check semantics with authors, provide quick access	
-// CHECK OK should add p_factor in rulsv? not in original but seems to change results a lot
 @main
 @documented(sediment.retention)
 model im:Retained soil:Soil im:Mass caused by ecology:Vegetation in t/ha
