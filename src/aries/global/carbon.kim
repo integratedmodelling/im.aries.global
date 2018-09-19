@@ -1,13 +1,14 @@
 namespace aries.global.carbon
 	using (VEGETATION_CARBON_TABLE) from aries.global.carbon.tables;
-	
+
+@documented(carbon.global.totalstorage)	
 model chemistry:Organic chemistry:Carbon im:Mass in t/ha
 	observing 	
 		ecology:Vegetation chemistry:Carbon im:Mass in t/ha named vegetation_carbon_storage,
 		soil:Soil chemistry:Organic chemistry:Carbon im:Mass in t/ha named soil_carbon_storage
 	set to
 		[vegetation_carbon_storage + soil_carbon_storage];
-		
+
 @documented(carbon.global.vegetation)
 model ecology:Vegetation chemistry:Carbon im:Mass in t/ha
 	observing
