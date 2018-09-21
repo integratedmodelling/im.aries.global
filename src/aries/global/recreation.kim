@@ -21,7 +21,7 @@ model im:Realized value of behavior:Outdoors behavior:Recreation 1 to 9
 	lookup (travel_time, potential_recreation_supply, ?) into RECREATION_OPPORTUNITY_TABLE;
 
 @documented(recreation.values.potential)
-model im:Potential value of behavior:Outdoors behavior:Recreation
+model im:Potential value of behavior:Outdoor behavior:Recreation
 	observing 
 		magnitude of proportion of behavior:Outdoor in behavior:Recreation named human_influence,
 		distance to conservation:ProtectedArea in m named distance_to_pristine_areas,
