@@ -26,7 +26,7 @@ model occurrence of agriculture:Pollinator biology:Insect caused by ecology:Land
 		return stream_effect + lake_effect + (nesting_suitability * flowering_suitability)
 	];
 
-@documented(pollination.insectoccurrence.landscape)	
+@documented(pollination.insectoccurrence.weather)	
 model occurrence of agriculture:Pollinator biology:Insect caused by earth:Weather
 	observing
 		im:Mean earth:AtmosphericTemperature during im:Year in Celsius named air_temperature,
