@@ -33,7 +33,6 @@ model occurrence of agriculture:Pollinator biology:Insect caused by earth:Weathe
 		im:Mean earth:SolarRadiation during im:Year in J named solar_radiation
 	set to [0.62 + 1.027 * air_temperature + 0.006 * solar_radiation];
 	
-@main
 @documented(pollination.insectoccurrence)	
 model occurrence of agriculture:Pollinator biology:Insect
 	observing 
