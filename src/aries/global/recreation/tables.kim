@@ -7,27 +7,27 @@ define HEMEROBY_TABLE as {{
 	-----------------------------------------------------------------
 	landcover:ArtificialSurface                     |  7,
 	landcover:ArableLand                            |  6,
-	landcover:NonIrrigatedArableLand                |  5, //4b-5a-5b
-	landcover:PermanentlyIrrigatedArableLand        |  5, //4b-5a-5b
-	landcover:RiceField                             |  5, //4b-5a-5b
-	landcover:PermanentCropland                     |  4, //4a-4b-5a  //ADD
-	landcover:Vineyard                              |  4, //4a-4b-5a
-	landcover:FruitAndBerryPlantation               |  4, //4a-4b-5a
-	landcover:OliveGrove                            |  4, //4a-4b-5a
-	landcover:Pastureland                           |  4, //3-4a-4b
-	landcover:AnnualCroplandAssociatedWithPermanent |  4, //4a-4b-5a
-	landcover:ComplexCultivationPatternedLand       |  4, //4a-4b-5a
-	landcover:AgriculturalLandWithNaturalVegetation |  4, //4a-4b-5a
-	landcover:AgroForestryLand                      |  4, //3-4a-4b
-	landcover:BroadleafForest                       |  3, //2-3-4a
-	landcover:ConiferousForest                      |  3, //2-3-4a
-	landcover:MixedForest                           |  3, //2-3-4a
-	landcover:NaturalGrassland                      |  3, //2-3-4a
+	landcover:NonIrrigatedArableLand                |  5, 
+	landcover:PermanentlyIrrigatedArableLand        |  5, 
+	landcover:RiceField                             |  5,
+	landcover:PermanentCropland                     |  4,
+	landcover:Vineyard                              |  4,
+	landcover:FruitAndBerryPlantation               |  4, 
+	landcover:OliveGrove                            |  4,
+	landcover:Pastureland                           |  4,
+	landcover:AnnualCroplandAssociatedWithPermanent |  4,
+	landcover:ComplexCultivationPatternedLand       |  4,
+	landcover:AgriculturalLandWithNaturalVegetation |  4,
+	landcover:AgroForestryLand                      |  4,
+	landcover:BroadleafForest                       |  3,
+	landcover:ConiferousForest                      |  3,
+	landcover:MixedForest                           |  3,
+	landcover:NaturalGrassland                      |  3, 
 	landcover:MoorAndHeathland                      |  2,
 	landcover:SclerophyllousVegetation              |  2,
 	landcover:TransitionalWoodlandScrub             |  2,
 	landcover:BeachDuneAndSand                      |  2,
-	landcover:BareArea                              |  1, //ADD
+	landcover:BareArea                              |  1, 
 	landcover:BareRock                              |  1,
 	landcover:LichenMoss                            |  1,
 	landcover:SparseVegetation                      |  2,

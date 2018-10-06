@@ -4,7 +4,7 @@ This project contains a baseline conceptualization of ecosystem services (ES) su
 and demand for the [ARIES](http://aries.integratedmodelling.org) platform. The logical 
 statements, data and models provided here are used in ARIES to answer queries for 
 commonly recognized ES value metrics when not enough information is available to 
-build detailed, dynamic flow models. 
+build detailed, dynamic flow models. A [published article](https://www.sciencedirect.com/science/article/pii/S0048969718338737#bb0130) in Science of The Total Environment describes in detail the philosophy behind the models, their scope and their limitations.
 
 The models built by ARIES using this knowledge have, in general, similar resolution 
 and conceptual detail as those available in other ES assessment toolkits such as 
@@ -15,8 +15,8 @@ during each ARIES session.
 The latest version of the content of this project is served by the ARIES semantic 
 network and is thus available to any user of the ARIES platform, i.e. anyone who 
 is using the k.LAB Explorer or Modeler software (locally or, when available, online) 
-and has obtained a certificate that includes ARIES. No further downloads or installations 
-are required. Details on how to obtain a certificate can be found at the 
+and has obtained a k.LAB certificate that includes ARIES. No further downloads or installations 
+are required. Details on how to obtain a certificate and the software can be found at the 
 [ARIES](http://aries.integratedmodelling.org) or the 
 [Integrated Modelling Partnership](http://www.integratedmodelling.org) web 
 sites.
@@ -33,15 +33,15 @@ ES problem areas:
 
 * Riverine flood regulation
 * Carbon storage
-* Outdoors recreation
+* Outdoor recreation
 * Pollination
 * Sediment retention
 
 Areas in development for a forthcoming release in the short term include:
 
-* Mariculture suitability
 * Water availability (based on hydrological calculations)
 * Biodiversity value (based on machine learning of expert opinion)
+* Mariculture suitability
 
 In addition, this project provides a bridge to Multiple Criteria Analysis models 
 that allow automated *trade-off analysis* between diverse ES metrics, combined with 
@@ -66,11 +66,11 @@ to country scales and with seasonal to annual temporal scale:
     * Demanded value of FloodRegulation
     * Net value of FloodRegulation (surplus/deficit)
 * Outdoors recreation:
-    * Realized value of Outdoors Recreation
-    * Potential value of Outdoors Recreation
-    * Demanded value of Outdoors Recreation
-    * value of Outdoors Recreation (production function combining supply and demand)
-    * Net value of Outdoors Recreation (surplus/deficit)
+    * Potential value of Outdoor Recreation (Recreation Opportunity Spectrum)
+    * Theoretical value of Outdoor Recreation
+    * Demanded value of Outdoor Recreation
+    * value of Outdoor Recreation (production function combining supply and demand)
+    * Net value of Outdoor Recreation (surplus/deficit)
 * Pollination:
     * Occurrence of Pollinator Insect caused by Weather
     * Occurrence of Pollinator Insect caused by Landscape
@@ -94,8 +94,8 @@ data are currently available at spatial resolution ranging between 1km and 90m.
 
 This project is written in the k.IM semantic modeling language and requires the k.LAB 
 software stack version 0.10.0 or higher. Like in all k.LAB applications, each model 
-in this project is _logically_ self-contained and can be run in isolation; each is 
-expressed in the terms of the [IM worldview]() and must be run within the [k.LAB network]() 
+in this project represents a complete strategy to observe one concept, and can be run in isolation or as a dependency of other models. Each is 
+expressed in the terms of the concepts contained in the [IM worldview](http://www.integratedmodelling.org/?page_id=540) and must be run within the [k.LAB network](http://www.integratedmodelling.org/?page_id=471) 
 in order to resolve every logical dependency to data or models appropriate for the 
 context and scale of interest.
 
@@ -107,8 +107,7 @@ as is. Documentation templates for each model are also included in this project,
 formatted for the k.LAB documentation engine, so that each run can self-document 
 into a detailed human-readable report. 
 
-A scientific article about the models included in this project is in review at the 
-time of this writing, and will be linked here as soon as publicly available.
+More details on the models and their derivation are available in Martinez-López et al. (2018).
 
 # License
 
@@ -132,3 +131,9 @@ be directed to info@integratedmodelling.org.
 * Javier Martínez-Lopez (javier.martinez@bc3research.org)
 * Ferdinando Villa (ferdinando.villa@bc3research.org)
 * Brian Voigt (bvoigt@uvm.edu)
+
+## References
+
+Javier Martínez-López, Kenneth J. Bagstad, Stefano Balbi, Ainhoa Magrach, Brian Voigt, Ioannis Athanasiadis, Marta Pascual, Simon Willcock, Ferdinando Villa. Towards globally customizable ecosystem service models,
+Science of The Total Environment. Volume 650, Part 2,
+(2019), 2325-2336 DOI https://doi.org/10.1016/j.scitotenv.2018.09.371.

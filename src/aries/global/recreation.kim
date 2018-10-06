@@ -1,7 +1,7 @@
 namespace aries.global.recreation
 	using (HEMEROBY_TABLE, RECREATION_OPPORTUNITY_TABLE) from aries.global.recreation.tables;
 
-@todo('semantics is tentative')
+@documented(recreation.impedance)
 model im:Impedance of behavior:TravelConnection
 	observing 
 		distance from infrastructure:HumanSettlement in m 
@@ -13,17 +13,17 @@ model im:Impedance of behavior:TravelConnection
 		    : (451/(450 + Math.exp(1.12 * (10**-4) * (distance_from_human_settlements + 30000))))
 	];
 
-@documented(recreation.values.actual)
-model im:Realized value of behavior:Outdoors behavior:Recreation 1 to 9
+@documented(recreation.values.potential)
+model im:Potential value of behavior:Outdoor behavior:Recreation 1 to 9
 	observing
 		im:Normalized (im:Duration of behavior:TravelConnection) named travel_time,
-		im:Normalized (im:Potential value of behavior:Outdoor behavior:Recreation) named potential_recreation_supply
-	lookup (travel_time, potential_recreation_supply, ?) into RECREATION_OPPORTUNITY_TABLE;
+		im:Normalized (im:Theoretical value of behavior:Outdoor behavior:Recreation) named theoretical_recreation_supply
+	lookup (travel_time, theoretical_recreation_supply, ?) into RECREATION_OPPORTUNITY_TABLE;
 
-@documented(recreation.values.potential)
-model im:Potential value of behavior:Outdoor behavior:Recreation
+@documented(recreation.values.theoretical)
+model im:Theoretical value of behavior:Outdoor behavior:Recreation
 	observing 
-		magnitude of proportion of behavior:Outdoor in behavior:Recreation named human_influence,
+		proportion of (not conservation:Pristine) earth:Region caused by demography:HumanPopulation named human_influence,
 		distance to conservation:ProtectedArea in m named distance_to_pristine_areas,
 		distance to earth:Coastline in m    named distance_to_coast,
 		distance to earth:Waterway in m     named distance_to_streams,
@@ -54,14 +54,14 @@ model value of behavior:Outdoor behavior:Recreation 0 to 1
 	set to [(potential_recreation_supply ** 0.5) * (demand_for_recreation ** 0.5)];
 
 @documented(recreation.balance)
-model im:Net value of behavior:Outdoor behavior:Recreation -1 to 1
+model im:Net value of behavior:Outdoor behavior:Recreation
 	observing
 		im:Normalized (im:Potential value of behavior:Outdoor behavior:Recreation) named potential_recreation_supply,
 		im:Normalized (ses:Demanded value of behavior:Outdoor behavior:Recreation) named demand_for_recreation
 	set to [potential_recreation_supply - demand_for_recreation];
 
 @documented(recreation.hemeroby)
-@todo('annotation is all wrong')
-private model magnitude of proportion of behavior:Outdoor in behavior:Recreation
+model proportion of (not conservation:Pristine) earth:Region caused by demography:HumanPopulation
 	observing landcover:LandCoverType named land_cover_type
-	lookup (land_cover_type, ?) into HEMEROBY_TABLE;
+	lookup (land_cover_type, ?) into HEMEROBY_TABLE
+	set to [self/7.0];
